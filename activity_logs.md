@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 Activity Logs (Please write details about what you did!! TY!! 💖)
 
 [10/16]
@@ -9,6 +7,4 @@ Activity Logs (Please write details about what you did!! TY!! 💖)
     "halloooo" - Lydia
         - Added new files 
           (P.S. Feel free to change the filename to be more specific!)
-        
-
-</html>
+    
