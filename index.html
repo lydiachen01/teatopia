@@ -3,11 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Tea Leaves 🍵</title>
+
+    <script>
+        $(document).ready(function(){
+            const closeIcon = document.querySelector(".closeIcon");
+            const menuIcon = document.querySelector(".menuIcon");
+            const menu = document.querySelector(".menu")
+
+            $("#hamburger_menu").click(function(){
+                if (menu.classList.contains("showMenu")){
+                    menu.classList.remove("showMenu");
+                    closeIcon.style.display = "none";
+                    menuIcon.style.display = "block";
+                } else {
+                    menu.classList.add("showMenu");
+                    closeIcon.style.display = "block";
+                    closeIcon.style.color = "white";
+                    menuIcon.style.display = "none";
+                }
+            })
+        })
+    </script>
 </head>
 <body>
     <!-- Navbar -->
+    <div class="navbar">
+        <ul class="menu">
+            <li><a class="item" href="about_us.html">About Us</a></li>
+            <li><a class="item" href="benefits_of_tea.html">Benefits</a></li>
+            <li><a class="item" href="contacts.html">Contact</a></li>
+            <li><a class="item" href="location.html">Find Us</a></li>
+            <li><a class="item" href="menu.html">Menu</a></li>
+            <li><a class="item" href="checkout.html">Check Out</a></li>
+        </ul>
+    </div>
+
+    <button id="hamburger_menu">
+        <i class="menuIcon material-icons">menu</i>
+        <i class="closeIcon material-icons">close</i>
+    </button>
+
     <!-- Content -->
     <!-- Footer -->
+
 </body>
 </html>

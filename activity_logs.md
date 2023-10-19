@@ -1,4 +1,4 @@
-Activity Logs (Please write details about what you did!! TY!! 💖)
+Activity Logs (Please write details about what you did. TY!! 💖)
 
 [10/16]
     "hiiii" - Lucas
