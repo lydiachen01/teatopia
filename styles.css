@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-#logo {
+.logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -13,7 +13,12 @@
     font-weight: 800;
 }
 
-#logo:hover {
+.logo a {
+    text-decoration: none;
+    color: black;
+}
+
+.logo:hover {
     cursor: pointer;
 }
 
