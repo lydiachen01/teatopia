@@ -4,15 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
-    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+     <!-- Bootstrap CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <!-- Bootstrap CDN -->
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Login 🍵</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Jost', sans-serif;
+        }
 
+        body {
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 2vh;
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        .account {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 350px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, .574);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .account {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                margin: 50px auto;
+                width: 350px;
+            }
+        }
+
+
+        .account h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            font-family: 'Lexend Giga', sans-serif;
+        }
+
+        .account .user-box {
+            position: relative;
+        }
+
+        .account .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: white;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: #fff 1px solid;
+            outline: none;
+            background: transparent;
+        }
+
+        .account form .btn {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            font-weight: 500;
+            color: #d67c32;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            letter-spacing: 4px;
+            border-radius: 5px;
+            margin-left: 30%;
+        }
+
+        .account .btn:hover {
+            background: #dd520d;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .account-1 {
+            text-decoration: none;
+            color: white;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            background: none;
+        }
+
+        #background-img {
+            filter: blur(3px);
+            -webkit-filter: blur(3px);
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    </style>
+
+<script>
+    $(document).ready(function(){
+        const closeIcon = document.querySelector(".closeIcon");
+        const menuIcon = document.querySelector(".menuIcon");
+        const menu = document.querySelector(".menu")
+
+        $("#hamburger_menu").click(function(){
+            if (menu.classList.contains("showMenu")){
+                menu.classList.remove("showMenu");
+                closeIcon.style.display = "none";
+                menuIcon.style.display = "block";
+            } else {
+                menu.classList.add("showMenu");
+                closeIcon.style.display = "block";
+                closeIcon.style.color = "white";
+                menuIcon.style.display = "none";
+            }
+        })
+    })
+</script>
 </head>
 <body>
-    <div>This is the login page</div>
+    <img id="background-img" src="./assest/tea_background_3.jpg">
 
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul class="menu">
+            <li><a class="item" href="catalog.html">Catalog</a></li>
+            <li><a class="item" href="about_us.html">About Us</a></li>
+            <li><a class="item" href="benefits_of_tea.html">Benefits Of Tea</a></li>
+            <li><a class="item" href="contacts.html">Contact</a></li>
+            <li><a class="item" href="location.html">Find Us</a></li>
+        </ul>
+
+        <button id="hamburger_menu">
+            <i class="menuIcon material-icons">menu</i>
+            <i class="closeIcon material-icons">close</i>
+        </button>
+
+            <!-- Logo -->
+        <div class="logo"><a href="index.html">Logo</a></div>
+
+        <!-- Login Icon -->
+        <!-- <a href="login.html"><i class="fa fa-user" id="login_icon"></i></a> -->
+    </div>
+
+    <div class="account" id="login">
+        <h2>Login</h2>
+        <form id="login-form" action="#">
+            <div class="user-box">
+                <input type="text" name="email" id="email" placeholder="Email" required>
+            </div>
+
+            <div class="user-box">
+                <input type="text" name="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div class="selector">
+                <button type="submit" class="btn" value="Submit">Submit</button>
+            </div>
+        </form>
+
+    </div>
 </body>
 </html>
