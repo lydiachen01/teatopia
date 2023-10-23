@@ -9,7 +9,21 @@
     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Locations 🍵</title>
-
+    <style>
+        .google-map {
+            padding-bottom: 50%;
+            position: relative;
+       }
+       
+       .google-map iframe {
+            padding-top: 5em;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            position: absolute;
+       }
+    </style>
     <script>
         $(document).ready(function(){
             const closeIcon = document.querySelector(".closeIcon");
@@ -51,8 +65,10 @@
         <i class="closeIcon material-icons">close</i>
     </button>
 
-    <!-- Content -->
-    <!-- Footer -->
+    <div class="google-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23589.3041115897!2d-71.11281872089845!3d42.349707500000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37a0c42b7f6d3%3A0x6db28b1c13c38f1f!2sMap%20Room%20Tea%20Lounge!5e0!3m2!1sen!2sus!4v1698024969755!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+        <!-- Footer -->
 
 </body>
 </html>
