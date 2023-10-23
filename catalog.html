@@ -30,6 +30,84 @@
             })
         })
     </script>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    font-size: 14px;
+    margin: 0; /* Remove default body margin */
+}
+
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the columns horizontally */
+    padding: 20px;
+    margin: 0 auto; /* Center the catalog container on the page and add left/right margin */
+    max-width: 1200px; /* Adjust the maximum width as needed */
+}
+
+.column {
+    width: calc(50% - 20px);
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.column h2 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.column p {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.column img {
+    max-width: 100%;
+}
+
+.cart {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.cart h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.column1 {
+    width: calc(50% - 20px);
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 80px;
+    text-align: center;
+    border-radius: 20px;
+}
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -50,8 +128,109 @@
         <i class="menuIcon material-icons">menu</i>
         <i class="closeIcon material-icons">close</i>
     </button>
+    <div class="catalog">
+        <div class="column1">
+            <h2>Green Tea</h2>
+            <img src="" alt="Green Tea">
+            <p>Fresh and unoxidized, green tea is known for its grassy and slightly bitter flavor. Packed with antioxidants, it offers a delicate and soothing experience.</p>
+            <button onclick="addToCart('Green Tea')">Add to Cart</button>
+        </div>
 
-    <!-- Content -->
+        <div class="column1">
+            <h2>Black Tea</h2>
+            <img src="" alt="Black Tea">
+            <p>A fully oxidized tea with a robust, bold flavor. Black tea is perfect for those who enjoy a strong and invigorating cup.</p>
+            <button onclick="addToCart('Black Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Herbal Tea - Chamomile</h2>
+            <img src="" alt="Chamomile Tea">
+            <p>Chamomile tea is a caffeine-free herbal infusion renowned for its calming and soothing properties. It has a sweet and floral taste.</p>
+            <button onclick="addToCart('Chamomile Tea')">Add to Cart</button>
+        </div>
+        
+        <div class="column">
+            <h2>Oolong Tea</h2>
+            <img src="" alt="Oolong Tea">
+            <p>Oolong tea falls between green and black tea, offering a rich and complex flavor profile. It's a perfect balance of both worlds.</p>
+            <button onclick="addToCart('Oolong Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Earl Grey Tea</h2>
+            <img src="" alt="Earl Grey Tea">
+            <p>Earl Grey is a classic black tea infused with the essence of bergamot orange. It boasts a fragrant, citrusy aroma and taste.</p>
+            <button onclick="addToCart('Earl Grey Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>White Tea</h2>
+            <img src="" alt="White Tea">
+            <p>White tea is made from young tea leaves and buds. It's known for its subtle, sweet, and delicate flavor.</p>
+            <button onclick="addToCart('White Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Peppermint Tea</h2>
+            <img src="" alt="Peppermint Tea">
+            <p>Peppermint tea is an invigorating herbal infusion that delivers a refreshing burst of minty flavor. It's caffeine-free and great for digestion.</p>
+            <button onclick="addToCart('Peppermint Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Chai Tea</h2>
+            <img src="" alt="Chai Tea">
+            <p>Chai tea is a spiced black tea popular in India. It's a flavorful blend of black tea, spices, and milk, known for its warmth and bold taste.</p>
+            <button onclick="addToCart('Chai Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Jasmine Tea</h2>
+            <img src="" alt="Jasmine Tea">
+            <p>Jasmine tea is a fragrant green tea infused with jasmine flowers. It offers a delightful floral aroma and a mild, soothing taste.</p>
+            <button onclick="addToCart('Jasmine Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Rooibos Tea</h2>
+            <img src="" alt="Rooibos Tea">
+            <p>Rooibos, or red bush tea, is a caffeine-free herbal tea from South Africa. It has a naturally sweet and earthy flavor.</p>
+            <button onclick="addToCart('Rooibos Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Darjeeling Tea</h2>
+            <img src="" alt="Darjeeling Tea">
+            <p>Known as the "champagne of teas," Darjeeling tea is a black tea with a delicate and muscatel flavor, perfect for afternoon sipping.</p>
+            <button onclick="addToCart('Darjeeling Tea')">Add to Cart</button>
+        </div>
+
+        <div class="column">
+            <h2>Matcha tea</h2>
+            <img src="" alt="Matcha Tea">
+            <p> Matcha is a finely ground Japanese green tea, celebrated for its vibrant green color and rich, umami flavor. 
+                It's packed with antioxidants and provides a unique, energizing experience..</p>
+            <button onclick="addToCart('Matcha Tea')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </ul>
+    </div>
+
+    <script>
+        function addToCart(productName) {
+    const cartItems = document.getElementById('cart-items');
+    const li = document.createElement('li');
+    li.innerText = productName;
+    cartItems.appendChild(li);
+}
+    </script>
+
     <!-- Footer -->
 
 </body>
