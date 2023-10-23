@@ -9,6 +9,16 @@ h1, h2 {
     font-family: 'Fraunces', serif;
 }
 
+.carousel {
+    width: 100%;
+}
+
+.carousel-item {
+    height: 80vh;
+    background: no-repeat center center scroll;
+    background-size: cover;
+}
+
 .navbar .logo {
     display: block;
     margin: 0 auto;
