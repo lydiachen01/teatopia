@@ -40,16 +40,19 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     font-size: 14px;
-    margin: 0; /* Remove default body margin */
+    margin: 0; 
+}
+li{
+    list-style: none;
 }
 
 .catalog {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the columns horizontally */
+    justify-content: center; 
     padding: 20px;
-    margin: 0 auto; /* Center the catalog container on the page and add left/right margin */
-    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: 0 auto; 
+    max-width: 1200px;
 }
 
 .column {
@@ -79,6 +82,7 @@ body {
 .cart {
     background-color: #fff;
     border: 1px solid #e0e0e0;
+    border-radius: 10px;
     padding: 20px;
     margin: 10px;
     text-align: center;
@@ -89,16 +93,39 @@ body {
     margin-top: 0;
 }
 
-button {
-    background-color: #007bff;
+.cart li {
+    margin-bottom: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.cart li button {
+    background-color: #416843; 
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px; 
     cursor: pointer;
+    margin-left: auto;
+}
+
+.cart li button:hover {
+    background-color: #094f23; 
+}
+
+
+button {
+    background-color: #416843; 
+    color: #fff;
+    border: 1px hidden white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #094f23;
 }
 
 
@@ -112,6 +139,7 @@ button:hover {
     text-align: center;
     border-radius: 20px;
 }
+
     </style>
 </head>
 <body>
@@ -232,12 +260,39 @@ button:hover {
     </div>
 
     <script>
-        function addToCart(productName) {
-    const cartItems = document.getElementById('cart-items');
-    const li = document.createElement('li');
-    li.innerText = productName;
-    cartItems.appendChild(li);
-}
+    const cart = {};
+
+    function addToCart(productName) {
+        if (cart[productName]) {
+            cart[productName]++;
+        } else {
+            cart[productName] = 1; 
+        }
+        displayCart();
+    }
+
+    function displayCart() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = ''; 
+
+        for (const productName in cart) {
+            const quantity = cart[productName];
+            const li = document.createElement('li');
+            li.innerHTML = `${productName} &nbsp;&nbsp; x ${quantity}
+            <button onclick="removeFromCart('${productName}')" id = "cartButton">Remove</button>`;
+            cartItems.appendChild(li);
+        }
+    }
+
+    function removeFromCart(productName) {
+        if (cart[productName] > 1) {
+            cart[productName]--;
+        } else {
+            delete cart[productName];
+        }
+        displayCart();
+    }
+
     </script>
 
     <!-- Footer -->
