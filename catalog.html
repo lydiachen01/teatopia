@@ -144,6 +144,13 @@ button a{
 }
 
     </style>
+<script>
+    function goToCheckout() {
+        const cartData = encodeURIComponent(JSON.stringify(cart));
+        window.location.href = `checkout.html?cartData=${cartData}`;
+    }
+</script>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -260,7 +267,7 @@ button a{
         <ul id="cart-items">
             <!-- Cart items will be displayed here -->
         </ul>
-        <button> <a href="checkout.html">Checkout</a></button>
+        <button onclick="goToCheckout()">Checkout</button>
     </div>
     
     <script>
@@ -282,7 +289,7 @@ button a{
         for (const productName in cart) {
             const quantity = cart[productName];
             const li = document.createElement('li');
-            li.innerHTML = `${productName} &nbsp;&nbsp; x ${quantity}
+            li.innerHTML = `${productName} x ${quantity}
             <button onclick="removeFromCart('${productName}')" id = "cartButton">Remove</button>`;
             cartItems.appendChild(li);
         }

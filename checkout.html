@@ -39,6 +39,37 @@
             })
         })
     </script>
+    <style>
+        
+        #checkoutPage{
+            margin: 0 150px; 
+            padding-top: 120px;
+        }
+        li{
+            margin: 10px;
+        }
+        strong{
+            display:block;
+            text-align: right;
+            margin-right: 20px;
+        }
+        button {
+            background-color: #416843; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px; 
+            cursor: pointer;
+            margin: 30px 640px;
+        }
+        button:hover {
+            background-color: #094f23; 
+        }
+        #thankYouMessage{
+            margin: 10px 600px;
+        }
+    
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -62,8 +93,89 @@
         <!-- Login Icon -->
         <a href="login.html"><i class="fa fa-user" id="login_icon"></i></a>
     </div>
+    <div id="checkoutPage">
+    <h1 style="text-align: center;">Checkout</h1>
+    <ol id="checkout-items">
+        <!-- Cart items will be displayed here -->
+    </ol>
+    <p id="subtotal">Subtotal: $0.00</p>
+    <p id="tax">Tax (6.25%): $0.00</p>
+    <p id="total" style="font-weight: 1000;">Total: $0.00</p>
+</div>
+    <button id="thankYouButton">Complete Purchase</button>
+    
+    <p id="thankYouMessage" style="display: none;">Thank you for shopping with us!!</p>
+    <script>
+        
 
-    <!-- Content -->
+    document.addEventListener("DOMContentLoaded", function () {
+    const checkoutItems = document.getElementById('checkout-items');
+    const subtotalElement = document.getElementById('subtotal');
+    const taxElement = document.getElementById('tax');
+    const totalElement = document.getElementById('total');
+    const thankYouButton = document.getElementById('thankYouButton');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    const teaPrices = {
+        'Green Tea': 2.99,
+        'Black Tea': 3.49,
+        'Chamomile Tea': 2.79,
+        'Oolong Tea': 3.29,
+        'Earl Grey Tea': 3.99,
+        'White Tea': 2.89,
+        'Peppermint Tea': 2.49,
+        'Chai Tea': 3.69,
+        'Jasmine Tea': 2.99,
+        'Rooibos Tea': 2.59,
+        'Darjeeling Tea': 4.29,
+        'Matcha Tea': 4.99,
+        };
+
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    const cartData = getUrlParameter('cartData');
+    const cart = JSON.parse(decodeURIComponent(cartData));
+
+    let subtotal = 0;
+    const taxRate = 0.0625;
+
+    for (const productName in cart) {
+        const quantity = cart[productName];
+        const itemPrice = calculateItemPrice(productName);
+        const teaSubtotal = itemPrice * quantity;
+        subtotal += teaSubtotal;
+
+        const li = document.createElement('li');
+        li.innerHTML = `${productName} x ${quantity}<strong>$${teaSubtotal.toFixed(2)}</strong>`;
+        checkoutItems.appendChild(li);
+    }
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
+
+    subtotalElement.innerHTML = `Subtotal: <strong>$${subtotal.toFixed(2)}</strong>`;
+    taxElement.innerHTML = `Tax (6.25%): <strong>$${tax.toFixed(2)}</strong>`;
+    totalElement.innerHTML = `TOTAL <strong>$${total.toFixed(2)}</strong>`;
+
+
+    function calculateItemPrice(itemName) {
+        return teaPrices[itemName];
+    }
+
+    thankYouButton.addEventListener('click', function () {
+        thankYouMessage.style.display = 'block';
+        
+        setTimeout(function () {
+            window.location.href = 'index.html';
+        }, 1100);
+    });
+
+    });
+
+    </script>
+
     <!-- Footer -->
 
 </body>
