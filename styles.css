@@ -101,4 +101,15 @@ a {
     transform: translateX(0);
 }
 
+.carousel {
+    display: flex;
+    overflow: hidden;
+    height: 80vh;
+    width: 100%;
+    position: relative;
 
+}
+
+.carousel .carousel-item {
+    height: 80vh;
+}
