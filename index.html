@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="styles.css">
     <title>Tea Leaves: Homepage 🍵</title>
     <style>
+        *{
+            box-sizing: border-box;
+        }
+        
         section {
             padding-top: 50px;
             z-index: 1;
@@ -39,6 +43,29 @@
 
         .card {
             border-radius: 80px;
+        }
+
+        #contact_us_button {
+            background-color: #416843;
+            border-color: transparent;
+            color: white;
+        }
+
+        #contact_us_button:hover {
+            background-color: #4e8d6b;
+        }
+
+        .first_section, .second_section, .third_section {
+            <!-- border: orange 10px solid; -->
+
+        }
+
+        .carousel-control-prev, .carousel-control-next { 
+            z-index: 0;
+        }
+
+        .carousel-caption {
+            border: 2px solid orange;
         }
     </style>
 
@@ -69,7 +96,6 @@
     <div class="navbar">
         <ul class="menu">
             <li><a class="item" href="catalog.html">Catalog</a></li>
-            <li><a class="item" href="about_us.html">About Us</a></li>
             <li><a class="item" href="benefits_of_tea.html">Benefits Of Tea</a></li>
             <li><a class="item" href="contacts.html">Contact</a></li>
             <li><a class="item" href="location.html">Find Us</a></li>
@@ -90,7 +116,7 @@
     <!-- Content -->
     <div class="main-content">
         <section class="first_section">
-        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 0px;">
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -132,9 +158,9 @@
         </div>
         </section>
 
-        <section class="about_us" style=" max-width: 800px; margin: 0 auto; text-align: center;">
+        <section class="about_us" style="margin: 20px; max-width: 800px; margin: 0 auto; text-align: center;">
             <header
-                style="margin-top: 30px; border-bottom:#416843 5px double; border-top:#416843 5px double; padding: 20px; font-weight: bold; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                style="margin-top: 120px; border-bottom:#416843 5px double; border-top:#416843 5px double; padding: 20px; font-weight: bold; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
                 <h1>About Our Tea Shop</h1>
             </header>
             <section style="margin-bottom: 20px;">
@@ -170,23 +196,23 @@
             </section>
         </section>
 
-        <section class="contact_us" style="background: url(/assests/contact_us_tea_background.jpg); background-repeat: no-repeat;
+        <section class="second_section" style="background: url(/assests/contact_us_tea_background.jpg); background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
-        background-position: center;">
-            <div style="text-align: center;">
+        background-position: center; padding-top: 0px;">
+            <div style="text-align: center; color: white; background-color:#3e4f3f8d; padding: 6em 0 ;">
                 <h1>Quality Ingredients</h1>
-                <p>
+                <p style="margin: 0 20%; margin-bottom: 1em;">
                     At [Logo], we hand blend our quality ingredients to bring you the best flavors.
                     Love an ingredient, but don't see it in our selection? Or would like to make a custom blend?
                 </p>
-                <button><a href="contacts.html">Contact us!</a></button>
+                <button class="btn btn-outline-light" id="contact_us_button" style="margin-top: 2em;"><a href="contacts.html"" style="color: white;">Contact us!</a></button>
             </div>
         </section>
 
-        <section class="popular_picks">
+        <section class="third_section">
             <h1 style="text-align:center; margin: 40px 0;">Most Popular Tea Leaves</h1>
-            <div class="container" style="display: flex; justify-content: space-evenly;">
+            <div class="container" style="display: flex; justify-content: space-evenly; padding-bottom: 10em;">
                 <div class="row">
                     <div class="col">
                         <div class="card" style="width: 18rem;">
@@ -225,15 +251,76 @@
                 </div>
             </div>
         </section>
-
-        <section class="newsletter">
-            <div>a</div>
-        </section>
     </div>
 
 
     <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+    
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#!" class="text-white">Link 1</a></li>
+                        <li><a href="#!" class="text-white">Link 2</a></li>
+                        <li><a href="#!" class="text-white">Link 3</a></li>
+                        <li><a href="#!" class="text-white">Link 4</a></li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+    
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">More Links</h5>
+    
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#!" class="text-white">Link 1</a></li>
+                        <li><a href="#!" class="text-white">Link 2</a></li>
+                        <li><a href="#!" class="text-white">Link 3</a></li>
+                        <li><a href="#!" class="text-white">Link 4</a></li>
+                    </ul>
+                </div>
+                <!--Grid column-->
 
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    <!-- Section: Form -->
+                    <section class="">
+                        <form action="">
+                            <p class="pt-2">
+                                <strong>Sign up for our "Tidbit of Teas" series </strong>
+                            </p>
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="form5Example21" class="form-control" placeholder="Email address"/>
+                            </div>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Subscribe
+                            </button>
+                        </form>
+                    </section>
+                    <!-- Section: Form -->
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">SeaShoresByTheSeaShore</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    
+  <!-- Footer -->
 </body>
 
 </html>
