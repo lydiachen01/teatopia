@@ -103,3 +103,8 @@ button {
 .selector {
     display: row;
 }
+
+h1 {
+    color: white;
+    text-align: center;
+}
