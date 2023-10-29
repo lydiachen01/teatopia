@@ -11,6 +11,7 @@
      <!-- Bootstrap CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
@@ -19,8 +20,20 @@
     <link rel="stylesheet" href="styles.css">
     <title> Benefits of Tea 🍵</title>
     <style>
+        .properties {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* This creates three columns */
+            gap: 10px; /* Optional: Adds some gap between your grid items */
+        }
+
         .properties li {
-            padding: 20px 100px;
+            grid-column: span 1;
+            padding: 100px;
+            list-style-type: none;
+            background-color: #416843;
+            border-radius: 25px;
+            color: white;
+            margin-bottom: 1em;
         }
     </style>
     <script>
@@ -42,35 +55,38 @@
                     menuIcon.style.display = "none";
                 }
             })
+
+            // Initially hide the benefits section
+            $('#benefits').css('opacity', 0);
+
+            // Scroll animation
+            $("a[href='#benefits']").on('click', function(event) {
+                event.preventDefault();
+
+                let target = this.hash;
+                let $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing', function () {
+                    window.location.hash = target;
+                });
+            });
+
+            // Fade-in effect for the tea benefits section
+            $(window).on('scroll', function() {
+                var benefitsTop = $('#benefits').position().top;
+                var windowTop = $(window).scrollTop() + ($(window).height() / 1.5);
+
+                if (windowTop > benefitsTop) {
+                    $('#benefits').animate({ opacity: 1 }, 1000);
+                }
+            });
         })
 
-        // Smooth scroll animation
-        $("a[href='#benefits']").on('click', function(event) {
-            event.preventDefault();
+        $(".card").flip("click");
 
-            let target = this.hash;
-            let $target = $(target);
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
-        });
-
-        // Fade-in effect for the tea benefits section
-        $(window).on('scroll', function() {
-            var benefitsTop = $('#benefits').position().top;
-            var windowTop = $(window).scrollTop() + ($(window).height() / 1.5);
-
-            if (windowTop > benefitsTop) {
-                $('#benefits').animate({ opacity: 1 }, 1000);
-            }
-        });
-
-        // Initially hide the benefits section
-        $('#benefits').css('opacity', 0);
-
+        
     </script>
 </head>
 <body>
@@ -97,11 +113,11 @@
 
     <!-- Content -->
     <div class="main-content">
-        <section id="intro" style="display: grid; grid-template-columns: auto auto; column-gap: 20px; overflow-x: hidden;">
+        <section id="intro" style="display: grid; grid-template-columns: auto auto; overflow-x: hidden;">
             <img src="./assests/benefits_of_tea_1.jpg" style="height: 1000px; padding-top: 5em;">
             <div style="display: flex; align-items: center; border-bottom: 2px solid black; border-top: 2px solid black;">
                 <div style="text-align: center; padding: 10em; max-width: 1000px;">
-                    <h2>Why Tea?</h2>
+                    <h1>Why Tea?</h1>
                     <p>At Somerville Tea Haven, we're more than just tea enthusiasts; we're tea advocates. 
                         Our mission is to share the remarkable advantages of tea while honoring its centuries-old legacy. 
                         A Heritage Steeped in Tradition Tea's story spans over 5,000 years, originating in ancient China. 
@@ -115,23 +131,25 @@
             </div>
         </section>        
 
-        <section id="benefits" style="margin: 0 150px; padding-top: 120px;">
+        <section id="benefits" style="margin: 0 150px; padding: 100px 0;">
             <ul class="properties">
-                <li>Antioxidant Boost: Tea is a potent source of antioxidants that protect cells and DNA.</li>
-                <li>Heart Health: Enjoy a lower risk of heart disease with tea's help in maintaining healthy cholesterol and blood pressure levels.</li>
-                <li>Weight Wellness: Green tea's catechins boost metabolism and promote weight management.</li>
-                <li>Mental Clarity: L-theanine in tea enhances focus and cognitive function.</li>
-                <li>Digestive Comfort: Herbal teas like peppermint and ginger soothe digestion.</li>
-                <li>Immune Support: Polyphenols in tea help strengthen the immune system.</li>
-                <li>Hydration: Stay refreshed with tea, a healthier alternative to sugary drinks.</li>
+                <li class="card"><h2>Antioxidant Boost:</h2> Tea is a potent source of antioxidants that protect cells and DNA.</li>
+                <li class="card"><h2>Heart Health:</h2> Enjoy a lower risk of heart disease with tea's help in maintaining healthy cholesterol and blood pressure levels.</li>
+                <li class="card"><h2>Weight Wellness:</h2> Green tea's catechins boost metabolism and promote weight management.</li>
+                <li class="card"><h2>Mental Clarity:</h2> L-theanine in tea enhances focus and cognitive function.</li>
+                <li class="card"><h2>Digestive Comfort:</h2> Herbal teas like peppermint and ginger soothe digestion.</li>
+                <li class="card"><h2>Immune Support:</h2> Polyphenols in tea help strengthen the immune system.</li>
+                <li class="card"><h2>Hydration:</h2> Stay refreshed with tea, a healthier alternative to sugary drinks.</li>
             </ul>
 
-            <p>A World of Wellness in Every Cup Whether you're well-acquainted with tea's diverse flavors or just beginning your tea journey, Somerville Tea Haven welcomes you. 
+            <p style="text-align: center; font-style: italic; font-size: 32px; padding: 2em">"A World of Wellness in Every Cup"</p>
+
+            <p style="text-align: center; font-size: 25px;">Whether you're well-acquainted with tea's diverse flavors or just beginning your tea journey, Somerville Tea Haven welcomes you. 
                 Each cup of tea is an invitation to savor the benefits, the traditions, and the wellness it brings. Celebrate the history and embrace the health benefits that tea offers. 
                 Choose Somerville Tea Haven for a world of wellness in every sip.</p>
         </section>
     </div>
-    <!-- Footer -->
+
     <!-- Footer -->
     <footer class="bg-dark text-center text-white">
         <!-- Grid container -->
