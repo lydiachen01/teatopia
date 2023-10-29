@@ -39,13 +39,13 @@
         
     </style>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             const closeIcon = document.querySelector(".closeIcon");
             const menuIcon = document.querySelector(".menuIcon");
             const menu = document.querySelector(".menu")
 
-            $("#hamburger_menu").click(function(){
-                if (menu.classList.contains("showMenu")){
+            $("#hamburger_menu").click(function () {
+                if (menu.classList.contains("showMenu")) {
                     menu.classList.remove("showMenu");
                     closeIcon.style.display = "none";
                     menuIcon.style.display = "block";
@@ -64,7 +64,6 @@
     <div class="navbar">
         <ul class="menu">
             <li><a class="item" href="catalog.html">Catalog</a></li>
-            <li><a class="item" href="about_us.html">About Us</a></li>
             <li><a class="item" href="benefits_of_tea.html">Benefits Of Tea</a></li>
             <li><a class="item" href="contacts.html">Contact</a></li>
             <li><a class="item" href="location.html">Find Us</a></li>
@@ -75,7 +74,7 @@
             <i class="closeIcon material-icons">close</i>
         </button>
 
-         <!-- Logo -->
+        <!-- Logo -->
         <div class="logo"><a href="index.html">Logo</a></div>
 
         <!-- Login Icon -->
