@@ -63,6 +63,10 @@ a {
     z-index: 100;
 }
 
+.menuIcon {
+    color: #142215c5;
+}
+
 .item {
     display: block;
     margin: 2rem 4rem;
