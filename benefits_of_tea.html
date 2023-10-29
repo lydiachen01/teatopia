@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="styles.css">
     <title> Benefits of Tea 🍵</title>
@@ -37,6 +38,35 @@
                 }
             })
         })
+
+        $(document).ready(function() {
+            // Smooth scroll animation
+            $("a[href='#benefits']").on('click', function(event) {
+                event.preventDefault();
+    
+                let target = this.hash;
+                let $target = $(target);
+    
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing', function () {
+                    window.location.hash = target;
+                });
+            });
+    
+            // Fade-in effect for the 'Benefits' section
+            $(window).on('scroll', function() {
+                var benefitsTop = $('#benefits').position().top;
+                var windowTop = $(window).scrollTop() + ($(window).height() / 1.5);
+    
+                if (windowTop > benefitsTop) {
+                    $('#benefits').animate({ opacity: 1 }, 1000);
+                }
+            });
+    
+            // Initially hide the benefits section
+            $('#benefits').css('opacity', 0);
+        });
     </script>
 </head>
 <body>
@@ -75,11 +105,13 @@
                         Over time, tea became a global treasure, transcending borders and weaving a rich tapestry of cultures.
                         Embracing the Health Benefits At [Your Tea Selling Business Name], we're passionate about the <label style="font-size: 25px; font-weight: bold;">health benefits</label> tea offers: 
                     </p>
+                    <a href="#benefits" style="font-style:italic; color:gray;">Scroll down</a>
+
                 </div>
             </div>
         </section>        
 
-        <section style="margin: 0 150px; padding-top: 120px;">
+        <section id="benefits" style="margin: 0 150px; padding-top: 120px;">
             <ul>
                 <li>Antioxidant Boost: Tea is a potent source of antioxidants that protect cells and DNA.</li>
                 <li>Heart Health: Enjoy a lower risk of heart disease with tea's help in maintaining healthy cholesterol and blood pressure levels.</li>
