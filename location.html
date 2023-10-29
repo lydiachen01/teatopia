@@ -20,11 +20,13 @@
     <title>Locations 🍵</title>
     <style>
         #map {
-            display: flex;
+            display:flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
+
         }
         
         .google-map {
@@ -37,6 +39,10 @@
             height: 100%;
         }
         
+        .text {
+            margin-top: 10vh;
+            text-align: center;  
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -81,7 +87,15 @@
         <a href="login.html"><i class="fa fa-user" id="login_icon"></i></a>
     </div>
 
+    
+
     <div id="map">
+        <div class="text">
+            <h1>Our Locations</h1>
+            <p>Teatopia is located across the US. If you're in the neighborhood, visit our tea shop!
+                <br> Here are the locations where you can experience the aroma of our teas and explore our wide range of flavors firsthand.</p>
+        </div>
+        
         <div class="google-map">
             <iframe src="https://www.google.com/maps/d/embed?mid=12zUaa4RP_DIjbnflJ5BH9CHOLcQc_S0&ehbc=2E312F" width="640" height="480"></iframe>
         </div>
