@@ -113,3 +113,14 @@ a {
 .carousel .carousel-item {
     height: 80vh;
 }
+
+@media screen and (max-width: 768px) {
+    .carousel {
+        top: 2rem;
+        height: 45vh;
+    }
+    .carousel .carousel-item {
+        height: 45vh;
+        font-size: smaller;
+    }
+}
