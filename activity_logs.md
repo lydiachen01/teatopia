@@ -18,8 +18,6 @@ Activity Logs (Please write details about what you did. TY!! 💖)
     just tryna keep track of whats happenning hehe
     TODO:
         - mobile friendly test
-        - consider making js for account
-        - refine styles for login/signup
         - footer content -- add footer to other files upon completion
         index.html: 
         - what is 2nd slide show content
