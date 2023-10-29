@@ -27,7 +27,7 @@
         #intro {
             display: grid;
             grid-template-columns: auto auto;
-            border-bottom: 2px solid black;
+            border-bottom: 1px solid black;
         }
 
         img {
@@ -38,6 +38,7 @@
         .properties {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            border: transparent;
             grid-gap: 20px;
         }
 
@@ -58,12 +59,6 @@
 
             #intro {
                 grid-template-columns: auto;
-            }
-        }
-        
-        @media screen and (max-width: 768px) {
-            #intro {
-                grid-template-columns: auto; /* This creates one column for smaller screens */
             }
         }
     </style>
@@ -110,7 +105,9 @@
                 var windowTop = $(window).scrollTop() + ($(window).height() / 1.5);
 
                 if (windowTop > benefitsTop) {
-                    $('#benefits').animate({ opacity: 1 }, 1000);
+                    $("#benefits").each(function(){
+                        $(this).animate({ opacity: 1 }, 1000);
+                    })
                 }
             });
         })
@@ -148,7 +145,7 @@
     <div class="main-content">
         <section id="intro">
             <img src="./assests/benefits_of_tea_1.jpg" style="height: 1000px; padding-top: 5em;">
-            <div style="display: flex; align-items: center; border-top: 2px solid black;">
+            <div style="display: flex; align-items: center;">
                 <div style="text-align: center; padding: 10em; max-width: 1000px;">
                     <h1>Why Tea?</h1>
                     <p>At Somerville Tea Haven, we're more than just tea enthusiasts; we're tea advocates. 
@@ -165,7 +162,7 @@
         </section>        
 
         <section id="benefits" style="margin: 0 150px; padding: 100px 0;">
-            <ul class="properties card" style="padding:0;">
+            <ul class="properties card" style="padding: 0;">
                 <li><h2>Antioxidant Boost:</h2> Tea is a potent source of antioxidants that protect cells and DNA.</li>
                 <li><h2>Heart Health:</h2> Enjoy a lower risk of heart disease with tea's help in maintaining healthy cholesterol and blood pressure levels.</li>
                 <li><h2>Weight Wellness:</h2> Green tea's catechins boost metabolism and promote weight management.</li>

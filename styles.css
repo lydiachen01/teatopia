@@ -9,8 +9,7 @@ h1, h2 {
     font-family: 'Fraunces', serif;
 }
 
-.navbar .logo {
-    display: block;
+.logo {
     margin: 0 auto;
     text-align: center;
     font-weight: 800;
@@ -32,7 +31,6 @@ a {
 }
 
 #login_icon {
-    margin-right: 5em;
     z-index: 1;
 }
 
@@ -41,10 +39,11 @@ a {
     width: 100vw;
     height: 5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    border-bottom: 5px double #41684388;
+    border-bottom: 5px double #203522c5;
     background-color: white;
+    padding: 0 5em;
     z-index: 5;
 }
 
@@ -58,7 +57,7 @@ a {
     bottom: 0;
     min-width: 400px;
     height: 100vh;
-    background-color: #142215c5;
+    background-color: #203522c5;
     list-style: none;
     padding-top: 4rem;
     z-index: 100;
