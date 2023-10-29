@@ -70,12 +70,13 @@ li{
 }
 
 .column p {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.2;
 }
 
 .column img {
     max-width: 100%;
+    margin-bottom: 5px;
 }
 
 .cart {
@@ -131,16 +132,7 @@ button a{
     text-decoration: none;
     color: white;
 }
-.column1 {
-    width: calc(50% - 20px);
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    padding: 10px;
-    margin: 10px;
-    margin-top: 80px;
-    text-align: center;
-    border-radius: 20px;
-}
+
 
     </style>
 <script>
@@ -174,14 +166,14 @@ button a{
     </div>
 
     <div class="catalog">
-        <div class="column1">
+        <div class = "column" style="margin-top: 80px;">
             <h2>Green Tea</h2>
             <img src="./assests/green_tea.png" alt="Green Tea">
             <p>Fresh and unoxidized, green tea is known for its grassy and slightly bitter flavor. Packed with antioxidants, it offers a delicate and soothing experience.</p>
             <button onclick="addToCart('Green Tea')">Add to Cart</button>
         </div>
 
-        <div class="column1">
+        <div class = "column" style="margin-top: 80px;">
             <h2>Black Tea</h2>
             <img src="./assests/black_tea.jpg" alt="Black Tea">
             <p>A fully oxidized tea with a robust, bold flavor. Black tea is perfect for those who enjoy a strong and invigorating cup.</p>
