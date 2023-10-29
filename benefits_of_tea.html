@@ -24,6 +24,17 @@
             font-size: 30px;
         }
 
+        #intro {
+            display: grid;
+            grid-template-columns: auto auto;
+            border-bottom: 2px solid black;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
         .properties {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -40,11 +51,19 @@
             margin-bottom: 1em;
         }
 
-        @media screen {
-            
-
+        @media screen and (max-width: 1200px){
             .properties {
                 grid-template-columns: 1fr;
+            }
+
+            #intro {
+                grid-template-columns: auto;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            #intro {
+                grid-template-columns: auto; /* This creates one column for smaller screens */
             }
         }
     </style>
@@ -127,7 +146,7 @@
 
     <!-- Content -->
     <div class="main-content">
-        <section id="intro" style="display: grid; grid-template-columns: auto auto; overflow-x: hidden; border-bottom: 2px solid black;">
+        <section id="intro">
             <img src="./assests/benefits_of_tea_1.jpg" style="height: 1000px; padding-top: 5em;">
             <div style="display: flex; align-items: center; border-top: 2px solid black;">
                 <div style="text-align: center; padding: 10em; max-width: 1000px;">
@@ -146,14 +165,14 @@
         </section>        
 
         <section id="benefits" style="margin: 0 150px; padding: 100px 0;">
-            <ul class="properties" style="padding:0;">
-                <li class="card"><h2>Antioxidant Boost:</h2> Tea is a potent source of antioxidants that protect cells and DNA.</li>
-                <li class="card"><h2>Heart Health:</h2> Enjoy a lower risk of heart disease with tea's help in maintaining healthy cholesterol and blood pressure levels.</li>
-                <li class="card"><h2>Weight Wellness:</h2> Green tea's catechins boost metabolism and promote weight management.</li>
-                <li class="card"><h2>Mental Clarity:</h2> L-theanine in tea enhances focus and cognitive function.</li>
-                <li class="card"><h2>Digestive Comfort:</h2> Herbal teas like peppermint and ginger soothe digestion.</li>
-                <li class="card"><h2>Immune Support:</h2> Polyphenols in tea help strengthen the immune system.</li>
-                <li class="card"><h2>Hydration:</h2> Stay refreshed with tea, a healthier alternative to sugary drinks.</li>
+            <ul class="properties card" style="padding:0;">
+                <li><h2>Antioxidant Boost:</h2> Tea is a potent source of antioxidants that protect cells and DNA.</li>
+                <li><h2>Heart Health:</h2> Enjoy a lower risk of heart disease with tea's help in maintaining healthy cholesterol and blood pressure levels.</li>
+                <li><h2>Weight Wellness:</h2> Green tea's catechins boost metabolism and promote weight management.</li>
+                <li><h2>Mental Clarity:</h2> L-theanine in tea enhances focus and cognitive function.</li>
+                <li><h2>Digestive Comfort:</h2> Herbal teas like peppermint and ginger soothe digestion.</li>
+                <li><h2>Immune Support:</h2> Polyphenols in tea help strengthen the immune system.</li>
+                <li><h2>Hydration:</h2> Stay refreshed with tea, a healthier alternative to sugary drinks.</li>
             </ul>
 
             <p style="text-align: center; font-style: italic; font-size: 32px; padding: 2em">"A World of Wellness in Every Cup"</p>
