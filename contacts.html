@@ -174,12 +174,12 @@
                 <h3>Question? Concerns? <br> Feel free to leave us a message!</h3> <br>
                 <form action="./index.html">
                     <label for="name" style="font-size: 14px">Name: &nbsp;</label><br>
-                    <input type="text" id="name" name="name" style="margin-bottom: .5em;"><br>
+                    <input type="text" id="name" name="name" style="margin-bottom: .5em;" required><br>
                     <label for="email" style="font-size: 14px">Email: &nbsp;</label><br>
-                    <input type="email" id="email" name="email" style="margin-bottom: .5em;"><br>
+                    <input type="email" id="email" name="email" style="margin-bottom: .5em;" required><br>
                     <label for="message" style="font-size: 14px">Message:</label><br>
-                    <textarea id="message" name="message" rows="2" cols="30" style="padding: 20px; margin-bottom: .5em;"></textarea><br>
-                    <input class="submit" type="submit" value="Submit" onclick="alert('Your message has been submitted successfully!')">
+                    <textarea id="message" name="message" rows="2" cols="30" style="padding: 20px; margin-bottom: .5em;" required></textarea><br>
+                    <input class="submit" type="submit" value="Submit">
                 </form> 
             </div>
         </div>

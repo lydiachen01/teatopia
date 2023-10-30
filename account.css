@@ -29,7 +29,7 @@ html {
     width: 400px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, .774);
+    background: #203522c5;
     border-radius: 10px;
 }
 
@@ -59,7 +59,7 @@ html {
 .account-box form .btn {
     display: inline-block;
     padding: 10px 20px;
-    color: #dd520d;
+    color: white;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -68,7 +68,7 @@ html {
     margin-top: 20px;
     letter-spacing: 4px;
     border-radius: 5px;
-    border: 1px solid #dd520d;
+    border: 1px solid white;
     margin-left: 30%;
 }
 
