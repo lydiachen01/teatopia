@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,82 +19,82 @@
     <link rel="stylesheet" href="styles.css">
     <title>Contact Us 🍵</title>
     <style>
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .main-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        .bg-image-container {
+            width: 100%;
+            height: 90vh;
+        }
 
-    .bg-image-container {
-        width: 100%;
-        height: 90vh;
-    }
+        .bg-image {
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+        }
 
-    .bg-image {
-        height: 100%;
-        object-fit: cover;
-    }
+        .bg-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+        }
 
-    .bg-image-container {
-        position: relative;
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-        height: 120vh; 
-    }
+        .contact {
+            text-align: center;
+            max-width: 90vw;
+            position: absolute;
+            top: 15vh;
+            padding: 5vh;
+            z-index: 1;
+            color: #fff;
+            background-color: #142215c5;
+        }
 
-    .contact {
-        text-align: center;
-        max-width: 90vw;
-        position: absolute;
-        top: 15vh;
-        padding: 5vh;
-        z-index: 1;
-        color: #fff;
-        background-color: #142215c5;
-    }
+        .contact a {
+            color: #fff;
+            font-size: 2em;
+            margin: 0.5vh;
+        }
 
-    .contact a {
-        color: #fff;
-        font-size: 2em;
-        margin: 0.5vh;
-    }
-    .contact a:hover {
-        color: #dd520d;
-    }
+        .contact a:hover {
+            color: #dd520d;
+        }
 
-    .contact p {
-        font-size: 14px;
-        line-height: 1.5;
-        font-weight: 300;
-    }
+        .contact p {
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
 
-    .contact .submit  {
-        background-color: #fff;
-        color: #142215c5;
-        padding: 1vh 2vh;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: 600;
-        border: none;
-    }
+        .contact .submit {
+            background-color: #fff;
+            color: #142215c5;
+            padding: 1vh 2vh;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+        }
 
-    .contact .submit:hover {
-        background-color: #dd520d;
-        color: #fff;
-    }
-
+        .contact .submit:hover {
+            background-color: #dd520d;
+            color: #fff;
+        }
     </style>
-    
+
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             const closeIcon = document.querySelector(".closeIcon");
             const menuIcon = document.querySelector(".menuIcon");
             const menu = document.querySelector(".menu")
 
-            $("#hamburger_menu").click(function(){
-                if (menu.classList.contains("showMenu")){
+            $("#hamburger_menu").click(function () {
+                if (menu.classList.contains("showMenu")) {
                     menu.classList.remove("showMenu");
                     closeIcon.style.display = "none";
                     menuIcon.style.display = "block";
@@ -108,6 +108,7 @@
         })
     </script>
 </head>
+
 <body>
     <!-- Navbar -->
     <div class="navbar">
@@ -125,27 +126,28 @@
 
         <!-- Logo -->
         <div class="logo"><a href="index.html">
-            <h1>Teatopia</h1>
-        </a></div>
+                <h1>Teatopia</h1>
+            </a></div>
 
         <!-- Login Icon -->
         <a href="login.html"><i class="fa fa-user" id="login_icon"></i></a>
     </div>
 
     <!-- Content -->
-    
+
     <div class="main-content">
         <div class="bg-image-container">
-            <img src="https://img.bucketlisters.com/content/uploads/blog/u9TQc_111_media_WEB%20SOCIAL%20SHARING%20%20(33).png" class="bg-image" alt="oneBrick-landing" />
+            <img src="https://img.bucketlisters.com/content/uploads/blog/u9TQc_111_media_WEB%20SOCIAL%20SHARING%20%20(33).png"
+                class="bg-image" alt="oneBrick-landing" />
             <div class="contact">
                 <h1>Contact Us</h1>
-                <p>Welcome to Teatopia!<br>  We're thrilled to have you here. If you have any questions, feedback, or just want to say hello, we'd love to hear from you. <br> Here's how you can reach us: </p>
-
-                <br>
+                <p>Welcome to Teatopia!<br> We're thrilled to have you here. If you have any questions, feedback, or
+                    just want to say hello, we'd love to hear from you. <br> Here's how you can reach us: </p>
                 <br>
 
                 <h3>Get In Touch Online</h3>
-                <p>We're social! Connect with us on social media for the latest updates, tea tips, and exclusive offers:</p>
+                <p>We're social! Connect with us on social media for the latest updates, tea tips, and exclusive offers:
+                </p>
                 <a href="https://www.facebook.com/gongchatea/">
                     <i class="fa-brands fa-square-facebook"></i>
                 </a>
@@ -158,8 +160,7 @@
                 <a href="https://www.yelp.com/biz/gong-cha-boston">
                     <i class="fa-brands fa-yelp"></i>
                 </a>
-        
-                <br>
+
                 <br>
 
 
@@ -168,22 +169,50 @@
                 <p>Saturday - Sunday: 10:00 AM - 6:00 PM</p>
 
                 <br>
-                <br>
 
                 <!-- add javascript form validation here -->
                 <h3>Question? Concerns? <br> Feel free to leave us a message!</h3> <br>
-                <form action="./index.html">
+                <form class="contact-form" action="./index.html">
                     <label for="name" style="font-size: 14px">Name: &nbsp;</label><br>
-                    <input type="text" id="name" name="name" style="margin-bottom: .5em;" required><br>
+                    <input type="text" id="name" name="name" style="margin-bottom: .5em;"><br>
                     <label for="email" style="font-size: 14px">Email: &nbsp;</label><br>
-                    <input type="email" id="email" name="email" style="margin-bottom: .5em;" required><br>
+                    <input type="email" id="email" name="email" style="margin-bottom: .5em;"><br>
                     <label for="message" style="font-size: 14px">Message:</label><br>
-                    <textarea id="message" name="message" rows="2" cols="30" style="padding: 20px; margin-bottom: .5em;" required></textarea><br>
+                    <textarea id="message" name="message" rows="2" cols="30"
+                        style="padding: 20px; margin-bottom: .5em;"></textarea><br>
                     <input class="submit" type="submit" value="Submit">
-                </form> 
+                </form>
             </div>
         </div>
-    <!-- Footer -->
+        <!-- Footer -->
+        <script>
+            document.querySelector(".contact-form").addEventListener("submit", function (event) {
+                event.preventDefault();
 
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var message = document.getElementById("message").value;
+
+                // Regular expression for validating an Email
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+                // Validation for Name
+                if (name.trim() === '') {
+                    alert("Please input your name");
+                }
+
+                // Validation for Email
+                if (!emailPattern.test(email)) {
+                    alert("Please input a valid email address");
+                }
+
+                // Validation for Message
+                if (message.trim() === '') {
+                    alert("Message is required");
+                }
+            });
+
+        </script>
 </body>
+
 </html>
