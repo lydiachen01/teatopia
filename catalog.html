@@ -145,6 +145,10 @@ crossorigin="anonymous"></script>
         max-height: 40vh;
         border-radius: 10px;
     }
+
+    .cartItems { 
+        margin: 0 299px;
+    }
 </style>
 <script>
     function goToCheckout() {
@@ -158,7 +162,7 @@ crossorigin="anonymous"></script>
     <!-- Navbar -->
     <div class="navbar">
         <ul class="menu">
-            <li><a class="item" href="catalog.html">Catalog</a></li>
+            <li><a class="item" href="catalog.html">Shop</a></li>
             <li><a class="item" href="benefits_of_tea.html">Benefits Of Tea</a></li>
             <li><a class="item" href="contacts.html">Contact</a></li>
             <li><a class="item" href="location.html">Find Us</a></li>
@@ -288,6 +292,7 @@ crossorigin="anonymous"></script>
 
     function displayCart() {
         const cartItems = document.getElementById('cart-items');
+        cartItems.className = "cartItems";
         cartItems.innerHTML = ''; 
 
         for (const productName in cart) {
