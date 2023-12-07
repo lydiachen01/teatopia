@@ -15,30 +15,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous">
+    </script>
 
     <link rel="stylesheet" href="styles.css">
     <title>Shopping Cart 🍵</title>
-
-    <script>
-        $(document).ready(function(){
-            const closeIcon = document.querySelector(".closeIcon");
-            const menuIcon = document.querySelector(".menuIcon");
-            const menu = document.querySelector(".menu")
-
-            $("#hamburger_menu").click(function(){
-                if (menu.classList.contains("showMenu")){
-                    menu.classList.remove("showMenu");
-                    closeIcon.style.display = "none";
-                    menuIcon.style.display = "block";
-                } else {
-                    menu.classList.add("showMenu");
-                    closeIcon.style.display = "block";
-                    closeIcon.style.color = "white";
-                    menuIcon.style.display = "none";
-                }
-            })
-        })
-    </script>
     <style>
         #checkoutPage{
             margin: 0 150px; 
@@ -78,28 +62,14 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <ul class="menu" style="margin-left:0; padding-left: 0">
-            <li><a class="item" href="catalog.html">Shop</a></li>
-            <li><a class="item" href="benefits_of_tea.html">Benefits Of Tea</a></li>
-            <li><a class="item" href="contacts.html">Contact</a></li>
-            <li><a class="item" href="location.html">Find Us</a></li>
-        </ul>
-
-        <button id="hamburger_menu" style="margin:0; padding: 0">
-            <i class="menuIcon material-icons">menu</i>
-            <i class="closeIcon material-icons">close</i>
-        </button>
-
-         <!-- Logo -->
-         <div class="logo"><a href="index.html">
-            <h1>Teatopia</h1>
-        </a></div>
-
-        <!-- Login Icon -->
-        <a href="login.html"><i class="fa fa-user" id="login_icon"></i></a>
-    </div>
+    <!-- Navbar Component -->
+    <div id="header" style="z-index:100;"></div>
+    <script src="jquery.js"></script>
+    <script>
+      $(function() {
+        $("#header").load("navbar.html");
+      });
+    </script>
 
     <div id="checkoutPage">
     <h1 style="text-align: center;" id = cTitle>Checkout</h1>

@@ -4,18 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
+        rel="stylesheet">
     <title>Profile</title>
     <script
-			  src="https://code.jquery.com/jquery-3.7.1.js"
-			  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-			  crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    <style>
     
+        .parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        
+        .profile {
+            display: block;
+            margin: 100px 10%;
+            max-width: 1000px;
+            padding: 2em;
+            font-family: 'Fraunces', serif;
+            border: 1px solid olivedrab;
+        }
+
+        .left div{
+            padding: 1em;
+        }
+
+        .right {
+            border-left: 1px olivedrab solid;
+        }
+
+        .right div{
+            padding: 0 0 0 80px; 
+        }
+
+        label {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .box{
+            height: 160px;
+            margin-bottom: 80px;
+            background-color: rgba(106, 142, 35, 0.225);
+        }
+
+        .profile-img {
+            display: block;
+            height: 2em;
+            width: 2em;
+            background-color: gray;
+        }
+
+        .link div:hover{
+            background-color: rgba(106, 142, 35, 0.451);
+        }
+    </style>
 </head>
 <body>
-    <!-- navbar component -->
-    <!-- <object data="navbar.html" style="width: 100%"></object>  -->
-
-    <div id="header"></div>
+    <!-- Navbar Component -->
+    <div id="header" style="z-index:100;"></div>
     <script src="jquery.js"></script>
     <script>
       $(function() {
@@ -23,18 +77,51 @@
       });
     </script>
 
-    <div class="profile grid-cols-2 mx-6">
-        <!-- User Info/Contact Info -->
-        <div>User Info</div>
+    <div class="parent">
+        <div class="profile grid-cols-2 grid mx-6">
+            <!-- Sidebar -->
+            <div class="left">
+                <nav class="link">
+                    <a href="#user-info"><div>User Info</div></a>
+                    <a href="#shipping-info"><div>Shipping Addresses</div></a>
+                    <a href="#payment-info"><div>Payment Information</div></a>
+                    <a href="#order-history"><div>Order History</div></a>
+                </nav>
+                
+            </div>
 
-        <!-- Shipping Address -->
-        <div>Shipping Address</div>
-        
-        <!-- Payment -->
-        <div>Payment Information</div>
+            <div class="right">
+            <!-- User Info/Contact Info -->
+                <div id="user-info">
+                    <label>User Info</label>
+                    <div class="box"></div>
 
-        <!-- Order History -->
-        <div>Order History</div>
+                </div>
+
+                <!-- Shipping Address -->
+                <div id="shipping-info">
+                    <label>Shipping Address</label>
+                    <div class="box"></div>
+
+                </div>
+                
+                <!-- Payment -->
+                <div id="payment-info">
+                    <label>Payment Information</label>
+                    <div class="box"></div>
+
+                </div>
+
+                <!-- Order History -->
+                <div id="order-history">
+                    <label>Order History</label>
+                    <div class="box"></div>
+
+                </div>
+            </div>
+            <!-- end of profile -->
+        </div> 
+        <!-- end of parent -->
     </div>
 </body>
 </html>
