@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="your-sri-hash" crossorigin="anonymous">
     <!-- Bootstrap CDN -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,9 +40,9 @@
       });
     </script>
 
-    <div class="account-box" id="register" action="#">
+    <div class="account-box" id="register">
         <h1>Login</h1>
-        <form id="register-form" method="POST" action="/login">
+        <form id="register-form" method="POST" action="user_auth.php">
             <div class="user-box">
                 <input type="email" name="email" id="email" placeholder="Email"
                 required>
@@ -61,36 +59,5 @@
             </div>
         </form>
     </div>
-
-    <script>
-        document.querySelector('.btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = document.querySelector('#email').value;
-            const password = document.querySelector('#password').value;
-                        
-            console.log(email);
-            console.log(password);
-        
-            fetch('http:/.127.0.0.1:5500/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                })
-            })
-            .then((data) => {
-                if (data) {
-                    console.log("This is data:", data);
-                    return data;
-                } else {
-                    console.log('No JSON data to parse');
-                }
-            })
-            .catch((error) => console.log(error));            
-        });        
-    </script>
-</body>
+</body> 
 </html>
