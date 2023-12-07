@@ -24,35 +24,14 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous">
     </script>
-
     <link rel="stylesheet" href="styles.css">
     <title>Login 🍵</title>
     <link rel="stylesheet" href="account.css">
-
-    <script>
-                $(document).ready(function () {
-            const closeIcon = document.querySelector(".closeIcon");
-            const menuIcon = document.querySelector(".menuIcon");
-            const menu = document.querySelector(".menu")
-
-            $("#hamburger_menu").click(function () {
-                if (menu.classList.contains("showMenu")) {
-                    menu.classList.remove("showMenu");
-                    closeIcon.style.display = "none";
-                    menuIcon.style.display = "block";
-                } else {
-                    menu.classList.add("showMenu");
-                    closeIcon.style.display = "block";
-                    closeIcon.style.color = "white";
-                    menuIcon.style.display = "none";
-                }
-            })
-        })
-    </script>
+    
 </head>
 
 <body>
-    <img id="background-img" src="./assests/tea_background_4.jpg">
+    <img id="background-img" src="#">
     
     <!-- Navbar -->
     <div id="header"></div>
@@ -63,11 +42,11 @@
       });
     </script>
 
-    <div class="account-box" id="register">
+    <div class="account-box" id="register" action="#">
         <h1>Login</h1>
-        <form id="register-form">
+        <form id="register-form" method="POST" action="/login">
             <div class="user-box">
-                <input type="text" name="email" id="email" placeholder="Email"
+                <input type="email" name="email" id="email" placeholder="Email"
                 required>
             </div>
 
@@ -81,8 +60,37 @@
                 <button type="submit" class="btn">Submit</button>
             </div>
         </form>
-
     </div>
-</body>
 
+    <script>
+        document.querySelector('.btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
+                        
+            console.log(email);
+            console.log(password);
+        
+            fetch('http:/.127.0.0.1:5500/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                })
+            })
+            .then((data) => {
+                if (data) {
+                    console.log("This is data:", data);
+                    return data;
+                } else {
+                    console.log('No JSON data to parse');
+                }
+            })
+            .catch((error) => console.log(error));            
+        });        
+    </script>
+</body>
 </html>
