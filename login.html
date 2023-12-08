@@ -51,7 +51,7 @@
             <div class="user-box">
                 <input type="text" name="password" id="password" 
                 placeholder="Password" required>
-                <div id="login-status" class="hidden">Invalid email or password.</div>
+                <span id="login-status"></span>
             </div>
 
             <div class="selector">
@@ -65,12 +65,14 @@
         // Get the status from the URL parameters
         let status = "success";
         const urlParams = new URLSearchParams(window.location.search);
-        status = urlParams.get('status');
+        status = urlParams.get("status");
     
         // Use the status as needed
-        if (status === 'failure') {
+        if (status == "failure") {
             // Handle failure case
-            document.getElementById('login-status').classList.remove('hidden');
+            document.getElementById("login-status").textContent = "Invalid email or password";
+        } else {
+            document.getElementById("login-status").textContent = "";
         }
     </script>
 </body> 

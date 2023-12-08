@@ -10,24 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <script src="jquery.js"></script>
     <style>
-        nav {
-          display: block;
-          position: fixed;
-          background-color: white;
-          font-family: 'Inter', sans-serif;
-          width: 100%;
-          z-index: 999;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      nav {
+        display: block;
+        position: fixed;
+        background-color: white;
+        font-family: 'Inter', sans-serif;
+        width: 100%;
+        z-index: 999;
+      }
+
+      @media screen and (max-width: 639px){
+        #logo{
+          margin-left: 6.5em;
         }
 
-        @media screen and (max-width: 639px){
-          #logo{
-            margin-left: 6.25em;
-          }
-
-          #ham-bar {
-            margin-left: 1em;
-          }
+        #ham-bar {
+          margin-left: 1em;
         }
+      }
+
+      @media screen and (min-width: 639px) {
+        #mobile-menu {
+          display: none;
+        }
+      }
     </style>
 </head>
 <body>
@@ -76,14 +88,26 @@
       
               <!-- Profile dropdown -->
               <div class="relative ml-3" id="user-menu">
-                <div>
-                  <a href="login.html">
-                    <button type="button" class="relative flex text-sm" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                      <span class="absolute -inset-1.5"></span>
-                      <span class="sr-only">Open user menu</span>
-                      <span><img class="h-4 w-4 mx-6 " src="./assests/user_default.png" alt="profile"></span>
-                    </button>
-                  </a>
+                <div style="display: flex;">
+                  <div>
+                    <a href="checkout.html">
+                      <button type="button" class="navbar-btn relative flex text-sm h-7" id="checkout-menu-button" aria-expanded="false" aria-haspopup="true">
+                        <span class="absolute -inset-1.5"></span>
+                        <span class="sr-only">Open user menu</span>
+                        <span class="flex items-center"><img class="h-7 w-7 mx-2" src="./assests/teapot.png" alt="profile"></span>
+                      </button>
+                    </a>
+                  </div>
+                  
+                  <div>
+                    <a href="login.html">
+                      <button type="button" class="navbar-btn relative flex text-sm h-7" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                        <span class="absolute -inset-1.5"></span>
+                        <span class="sr-only">Open user menu</span>
+                        <span class="flex items-center"><img class="h-5 w-5 mx-2" src="./assests/user_default.png" alt="profile"></span>
+                      </button>
+                    </a>
+                  </div>
                 </div>
       
                 <!--
@@ -121,33 +145,5 @@
         </div>
       </button>
       </nav>   
-      
-      <!-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          // Mobile menu toggle
-          var mobileButton = document.querySelector('[aria-controls="mobile-menu"]');
-          var mobileMenu = document.getElementById('mobile-menu');
-          mobileButton.addEventListener('click', function () {
-            if (mobileMenu.classList.contains('hidden')){
-              mobileMenu.classList.remove('hidden');
-            } else {
-              mobileMenu.classList.add('hidden');
-            }
-            
-          });
-      
-          // Profile dropdown toggle
-          var profileButton = document.getElementById('user-menu-button');
-          var profileMenu = document.getElementById('profile-menu');
-          profileButton.addEventListener('click', function () {
-            if (profileMenu.classList.contains('hidden')){
-              profileMenu.classList.remove('hidden');
-            } else {
-              profileMenu.classList.add('hidden');
-            }
-          });
-        });
-      </script> -->
-      
 </body>
 </html>

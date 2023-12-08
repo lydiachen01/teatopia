@@ -45,7 +45,7 @@
 
     <div class="account-box" id="register">
         <h1>Sign Up</h1>
-        <form id="register-form">
+        <form id="register-form" method="POST" action="create_user.php">
             <div class="user-box">
                 <input type="text" name="email" id="email" placeholder="Email" required>
             </div>
@@ -55,16 +55,41 @@
             </div>
 
             <div class="user-box">
-                <input type="text" name="password" id="password" placeholder="Confirm Password" required>
+                <input type="text" name="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <span class="error-message" id="error-message"></span>
             </div>
 
             <div class="selector">
                 <a href="./login.html" class="account">Already have an account?</a>
                 <button type="submit" class="btn">Submit</button>
+                <span class="signup-status" id="signup-status"></span>
             </div>
         </form>
-
     </div>
+
+    <script>
+        document.getElementById("confirmPassword").addEventListener("input", function(){
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (password === confirmPassword) {
+                errorMessage.textContent = '';
+            } else {
+                errorMessage.textContent = 'Passwords do not match';
+            }
+        })
+
+        let status = "success";
+        const urlParams = new URLSearchParams(window.location.search);
+        status = urlParams.get("status");
+    
+        if (status == "failure") {
+            document.getElementById("signup-status").textContent = "Registration failed. Please try again";
+        } else {
+            document.getElementById("signup-status").textContent = "";
+        }
+    </script>
 </body>
 
 </html>
