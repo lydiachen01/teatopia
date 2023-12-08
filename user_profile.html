@@ -18,6 +18,7 @@
     
         .parent {
             display: flex;
+            position: relative;
             justify-content: center;
             align-items: center;
             margin: 0;
@@ -30,6 +31,10 @@
             padding: 2em;
             font-family: 'Fraunces', serif;
             border: 1px solid olivedrab;
+        }
+
+        .left {
+            position: relative;
         }
 
         .left div{
@@ -62,7 +67,12 @@
             background-color: gray;
         }
 
-        .link div:hover{
+        .category {
+            position: relative;
+            z-index: 0;
+        }
+
+        .category div:hover{
             background-color: rgba(106, 142, 35, 0.451);
         }
     </style>
@@ -81,7 +91,7 @@
         <div class="profile grid-cols-2 grid mx-6">
             <!-- Sidebar -->
             <div class="left">
-                <nav class="link">
+                <nav class="category">
                     <a href="#user-info"><div>User Info</div></a>
                     <a href="#shipping-info"><div>Shipping Addresses</div></a>
                     <a href="#payment-info"><div>Payment Information</div></a>

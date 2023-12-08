@@ -9,6 +9,10 @@ h1, h2 {
     font-family: 'Fraunces', serif;
 }
 
+.hidden {
+    display: none;
+}
+
 .logo {
     margin: 0 auto;
     text-align: center;

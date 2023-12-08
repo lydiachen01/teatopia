@@ -46,7 +46,7 @@ html {
 
 .account-box .user-box input {
     width: 100%;
-    padding: 10px 0;
+    padding: 15px 0;
     font-size: 16px;
     color: white;
     margin-bottom: 30px;
@@ -107,4 +107,9 @@ button {
 h1 {
     color: white;
     text-align: center;
+}
+
+#login-status {
+    margin-top: -25px; 
+    padding: 0 0 20px 0;
 }

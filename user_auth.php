@@ -16,41 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($users[$username]) && $users[$username] === $password) {
         // Authentication passed
         $_SESSION['email'] = $username;
-        echo 'Login successful';
+        $status = 'success';
+        header("Location: user_profile.html");
     } else {
         // Authentication failed
-        echo 'Invalid email or password';
+        $status = 'failure';
+        header("Location: login.html?status=$status");
     }
 }
-?>
-
-<!-- Previous Node Attempt -->
-
-<!-- document.querySelector('.btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = document.querySelector('#email').value;
-            const password = document.querySelector('#password').value;
-                        
-            console.log(email);
-            console.log(password);
-        
-            fetch('http:/.127.0.0.1:5500/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                })
-            })
-            .then((data) => {
-                if (data) {
-                    console.log("This is data:", data);
-                    return data;
-                } else {
-                    console.log('No JSON data to parse');
-                }
-            })
-            .catch((error) => console.log(error));            
-        });         -->
