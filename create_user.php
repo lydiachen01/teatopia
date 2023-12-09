@@ -16,6 +16,7 @@ if ($conn->connect_error) {
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
     // Hash the password
@@ -32,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo 'User with this email already exists';
     } else {
         // Insert user into the database
-        $stmt = $conn->prepare("INSERT INTO user_table (email, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $email, $hashedPassword);
+        $stmt = $conn->prepare("INSERT INTO user_table (username, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
         if ($stmt->execute()) {
             // Registration successful
