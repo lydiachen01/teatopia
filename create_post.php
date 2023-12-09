@@ -1,5 +1,4 @@
 <?php
-
 // Start the session
 session_start();
 
@@ -10,7 +9,6 @@ $password = "@*2l@2f7i%&2";
 $dbname = "dbygr11xzpv4y";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 
 // Check the connection
 if ($conn->connect_error) {
@@ -30,10 +28,11 @@ if (isset($_SESSION['user_id'])) {
         $username = $user['username'];
 
         $content = $_POST['content'];
+        $title = $_POST['title'];
 
-        if ($content) {
+        if ($content && $title) {
             // Insert post data into post_table
-            $postInsertQuery = "INSERT INTO post_table (content, userID) VALUES ('$content', '$userId')";
+            $postInsertQuery = "INSERT INTO post_table (content, title, userID) VALUES ('$content', '$title', '$userId')";
             $conn->query($postInsertQuery);
 
             // Fetch the inserted post for response
@@ -59,5 +58,4 @@ if (isset($_SESSION['user_id'])) {
 
 // Close the database connection
 $conn->close();
-
 ?>
