@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // Update posts container with new post
                 const postElement = document.createElement('div');
-                postElement.textContent = `${data.username}: ${data.content}`;
+                postElement.textContent = `${data.username}: ${data.title} - ${data.content}`;
                 postsContainer.appendChild(postElement);
 
                 // Clear the form
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(posts => {
             posts.forEach(post => {
                 const postElement = document.createElement('div');
-                postElement.textContent = `${post.username}: ${post.content}`;
+                postElement.textContent = `${post.username}: ${post.title} - ${post.content}`;
                 postsContainer.appendChild(postElement);
             });
         })
