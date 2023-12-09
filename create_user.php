@@ -2,8 +2,10 @@
 
 $server = "localhost";
 $userid = "u9rnmkwnhqk3j";
-$pw = "#mWm2;z6h1m7";
-$db: "dbygr11xzpv4y5";
+$pw = "@*2l@2f7i%&2";
+$db = "dbygr11xzpv4y5";
+
+console.log("Reached create_user.php");
 
 $conn = new mysqli($server, $userid, $pw, $db);
 
