@@ -1,37 +1,33 @@
 <?php
-$server = "localhost";
-$username = "u9rnmkwnhqk3j";
-$password = "@*2l@2f7i%&2";
-$database = "dbygr11xzpv4y";
 
-// Create connection
-$conn = new mysqli($server, $username, $password, $database);
+// Include your database connection code or configuration file here
+
+$conn = new mysqli("localhost","u9rnmkwnhqk3j","@*2l@2f7i%&2","dbygr11xzpv4y5" );
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // Provide a JSON-formatted error response
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Connection failed: ' . $conn->connect_error]);
+    exit;
 }
-
-// Fetch products from the database
-$sql = "SELECT productName, description, image FROM product_table";
+// Query to fetch tea names from the database
+$sql = "SELECT productName AS name, description , image FROM product_table";
 $result = $conn->query($sql);
 
-// Check if there are results
-if ($result->num_rows > 0) {
-    // Fetch the data and store it in an array
-    $products = array();
-    while($row = $result->fetch_assoc()) {
-        $products[] = $row;
-    }
-
-    // Output the products as JSON
-    header('Content-Type: application/json');
-    echo json_encode($products);
-} else {
-    // No products found
-    echo "No products found in the database.";
+// Fetch tea names into an array of objects
+$teas = array();
+while ($row = $result->fetch_assoc()) {
+    $teas[] = array('name' => $row['name']);
 }
+
+// Set the response header to indicate JSON content
+header('Content-Type: application/json');
+
+// Return the data as JSON
+echo json_encode($teas);
 
 // Close the database connection
 $conn->close();
+
 ?>

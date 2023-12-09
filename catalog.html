@@ -25,7 +25,7 @@
             list-style: none;
         }
 
-        .catalog {
+        .tea-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -60,6 +60,15 @@
         .column img {
             max-width: 100%;
             margin-bottom: 20px;
+        }
+
+        .column:nth-child(1) {
+            margin-top: 80px;
+            
+        }
+
+        .column:nth-child(2) {
+            margin-top: 80px;
         }
 
         .cart {
@@ -133,37 +142,107 @@
         .cartItems {
             margin: 0 299px;
         }
+
+        .increment-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .increment-button {
+            cursor: pointer;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            font-size: 16px;
+            margin: 0 2px;
+        }
+
+        .increment-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around; /* Adjust as needed */
+            width: 100%;
+        }
+       
     </style>
 
     <script>
-        // Fetch tea names from PHP script
+        $(document).ready(function() {
+    // Fetch tea names from PHP script
         fetch('fetch_teas.php')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+                return response.json();
+            })
             .then(teas => {
-                const teaContainer = document.getElementById('tea-container');
+                if (Array.isArray(teas)) {
+                    const teaContainer = document.getElementById('tea-container');
 
-                // Display tea names and increment buttons
-                teas.forEach(tea => {
-                    const teaItem = document.createElement('div');
-                    teaItem.classList.add('column');
+                    // Display tea names and increment buttons
+                    teas.forEach(tea => {
+                        const teaItem = document.createElement('div');
+                        teaItem.classList.add('column');
 
-                    const teaName = document.createElement('h2');
-                    teaName.textContent = tea.name;
+                        const teaName = document.createElement('h2');
+                        teaName.textContent = tea.name;
 
-                    const incrementButton = document.createElement('button');
-                    incrementButton.textContent = 'Add to Cart';
-                    incrementButton.onclick = function () {
-                        addToCart(tea.name);
-                    };
+                        const teaImage = document.createElement('img');
+                        teaImage.src = tea.image;
+                        teaImage.alt = tea.name;
 
-                    teaItem.appendChild(teaName);
-                    teaItem.appendChild(incrementButton);
-                    teaContainer.appendChild(teaItem);
-                });
+                        const teaDescription = document.createElement('p');
+                        console.log(tea.description);
+                        teaDescription.textContent = tea.description;
+
+                        // Increment buttons and display
+                        const incrementContainer = document.createElement('div');
+                        incrementContainer.classList.add('increment-container');
+
+                        const minusButton = document.createElement('button');
+                        minusButton.classList.add('increment-button');
+                        minusButton.textContent = '-';
+                        minusButton.onclick = function () {
+                            removeFromCart(tea.name);
+                            quantityDisplay.textContent = cart[tea.name] || 0;
+                        };
+
+                        const quantityDisplay = document.createElement('span');
+                        quantityDisplay.classList.add('quantity-display');
+                        quantityDisplay.textContent = cart[tea.name] || 0;
+
+                        const plusButton = document.createElement('button');
+                        plusButton.classList.add('increment-button');
+                        plusButton.textContent = '+';
+                        plusButton.onclick = function () {
+                            addToCart(tea.name);
+                            quantityDisplay.textContent = cart[tea.name] || 0;
+                        };
+
+                        incrementContainer.appendChild(minusButton);
+                        incrementContainer.appendChild(quantityDisplay);
+                        incrementContainer.appendChild(plusButton);
+                        teaItem.appendChild(teaName);
+                        teaItem.appendChild(teaImage);
+                        teaItem.appendChild(teaDescription);
+                        teaItem.appendChild(incrementContainer);
+                        teaContainer.appendChild(teaItem);
+                    });
+                } else {
+                    console.error('Invalid data format received from the server.');
+                    console.log('Teas received from the server:', teas); 
+                }
             })
             .catch(error => {
-                console.error('Error fetching tea list:', error);
+                console.error('Error fetching tea list:', error.message);
             });
+
+});
+
     </script>
 </head>
 
@@ -176,8 +255,9 @@
             $("#header").load("navbar.html");
         });
     </script>
-
-    <div class="catalog"></div>
+        
+        <div class="tea-container" id="tea-container"></div>
+    
 
     <div class="cart">
         <h3>Shopping Cart</h3>
@@ -190,13 +270,13 @@
     <script>
         const cart = {};
 
+        // Function to update quantity in the cart
         function addToCart(productName) {
             if (cart[productName]) {
                 cart[productName]++;
             } else {
                 cart[productName] = 1;
             }
-            alert(`${productName} added to cart!`);
             displayCart();
         }
 
