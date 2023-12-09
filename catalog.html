@@ -1,290 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" 
-integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
-crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
-<script
-    src="https://code.jquery.com/jquery-3.7.1.js"
-    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous">
-</script>
-<link rel="stylesheet" href="styles.css">
-<title>Tea Leaves Catalog 🍵</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        font-size: 14px;
-        margin: 0; 
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Tea Leaves Catalog 🍵</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            font-size: 14px;
+            margin: 0;
+        }
 
-    li{
-        list-style: none;
-    }
+        li {
+            list-style: none;
+        }
 
-    .catalog {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; 
-        padding: 20px;
-        margin: 0 auto; 
-        max-width: 1200px;
-    }
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
 
-    .column {
-        width: calc(50% - 20px);
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        padding: 10px;
-        margin: 10px;
-        text-align: center;
-        border-radius: 20px;
-    }
+        .column {
+            width: calc(50% - 20px);
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 20px;
+        }
 
-    .column h2 {
-        margin: 10px 0;
-        margin-bottom: 20px;
-    }
+        .column h2 {
+            margin: 10px 0;
+            margin-bottom: 20px;
+        }
 
-    .column p {
-        font-size: 13px;
-        line-height: 1.2;
-        margin-bottom: 20px;
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
+        .column p {
+            font-size: 13px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            margin-left: 5vw;
+            margin-right: 5vw;
+        }
 
-    .column img {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
+        .column img {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
 
-    .cart {
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 10px;
-        text-align: center;
-    }
+        .cart {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
 
-    .cart h3 {
-        font-size: 18px;
-        margin-top: 0;
-    }
+        .cart h3 {
+            font-size: 18px;
+            margin-top: 0;
+        }
 
-    .cart li {
-        margin-bottom: 10px;
-        padding: 5px;
-        display: flex;
-        justify-content: space-between; 
-    }
+        .cart li {
+            margin-bottom: 10px;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .cart li button {
-        background-color: #416843; 
-        color: #fff;
-        border: none;
-        padding: 5px 10px; 
-        cursor: pointer;
-        margin-left: auto;
-    }
+        .cart li button {
+            background-color: #416843;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: auto;
+        }
 
-    .cart li button:hover {
-        background-color: #094f23; 
-    }
+        .cart li button:hover {
+            background-color: #094f23;
+        }
 
-    button {
-        background-color: #416843; 
-        color: #fff;
-        border: 1px hidden white;
-        border-radius: 5px;
-        padding: 10px;
-        cursor: pointer;
-        margin: 5px;
-    }
+        button {
+            background-color: #416843;
+            color: #fff;
+            border: 1px hidden white;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            margin: 5px;
+        }
 
-    button:hover {
-        background-color: #094f23;
-    }
+        button:hover {
+            background-color: #094f23;
+        }
 
-    button a{
-        justify-content: center;
-        text-decoration: none;
-        color: white;
-    }
+        button a {
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+        }
 
-    .column {
-        padding: 2vh;
-    }
-    .column img {
-        max-height: 40vh;
-        border-radius: 10px;
-    }
+        .column {
+            padding: 2vh;
+        }
 
-    .cartItems { 
-        margin: 0 299px;
-    }
-</style>
-<script>
-    function goToCheckout() {
-        const cartData = encodeURIComponent(JSON.stringify(cart));
-        window.location.href = `checkout.html?cartData=${cartData}`;
-    }
-</script>
+        .column img {
+            max-height: 40vh;
+            border-radius: 10px;
+        }
 
+        .cartItems {
+            margin: 0 299px;
+        }
+
+
+        .cartItems {
+            margin: 0 299px;
+        }
+    </style>
+
+    <script>
+        // Fetch tea names from PHP script
+        fetch('fetch_teas.php')
+            .then(response => response.json())
+            .then(teas => {
+                const teaContainer = document.getElementById('tea-container');
+
+                // Display tea names and increment buttons
+                teas.forEach(tea => {
+                    const teaItem = document.createElement('div');
+                    teaItem.classList.add('column');
+
+                    const teaName = document.createElement('h2');
+                    teaName.textContent = tea.name;
+
+                    const incrementButton = document.createElement('button');
+                    incrementButton.textContent = 'Add to Cart';
+                    incrementButton.onclick = function () {
+                        addToCart(tea.name);
+                    };
+
+                    teaItem.appendChild(teaName);
+                    teaItem.appendChild(incrementButton);
+                    teaContainer.appendChild(teaItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching tea list:', error);
+            });
+    </script>
 </head>
+
 <body>
     <!-- Navbar Component -->
     <div id="header" style="z-index:100;"></div>
     <script src="jquery.js"></script>
     <script>
-      $(function() {
-        $("#header").load("navbar.html");
-      });
+        $(function () {
+            $("#header").load("navbar.html");
+        });
     </script>
 
-    <div class="catalog">
-        <div class = "column" style="margin-top: 80px;">
-            <h2>Green Tea</h2>
-            <img src="./assests/green_tea.png" alt="Green Tea">
-            <p>Fresh and unoxidized, green tea is known for its grassy and slightly bitter flavor. Packed with antioxidants, it offers a delicate and soothing experience.</p>
-            <button onclick="addToCart('Green Tea')">Add to Cart</button>
-        </div>
-
-        <div class = "column" style="margin-top: 80px;">
-            <h2>Black Tea</h2>
-            <img src="./assests/black_tea.jpg" alt="Black Tea">
-            <p>A fully oxidized tea with a robust, bold flavor. Black tea is perfect for those who enjoy a strong and invigorating cup.</p>
-            <button onclick="addToCart('Black Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Herbal Tea - Chamomile</h2>
-            <img src="./assests/chamomile_tea.png" alt="Chamomile Tea">
-            <p>Chamomile tea is a caffeine-free herbal infusion renowned for its calming and soothing properties. It has a sweet and floral taste.</p>
-            <button onclick="addToCart('Chamomile Tea')">Add to Cart</button>
-        </div>
-        
-        <div class="column">
-            <h2>Oolong Tea</h2>
-            <img src="./assests/oolong_tea.jpg" alt="Oolong Tea">
-            <p>Oolong tea falls between green and black tea, offering a rich and complex flavor profile. It's a perfect balance of both worlds.</p>
-            <button onclick="addToCart('Oolong Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Earl Grey Tea</h2>
-            <img src="./assests/earl_grey_tea.jpg" alt="Earl Grey Tea">
-            <p>Earl Grey is a classic black tea infused with the essence of bergamot orange. It boasts a fragrant, citrusy aroma and taste.</p>
-            <button onclick="addToCart('Earl Grey Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>White Tea</h2>
-            <img src="./assests/white_tea.jpg" alt="White Tea">
-            <p>White tea is made from young tea leaves and buds. It's known for its subtle, sweet, and delicate flavor.</p>
-            <button onclick="addToCart('White Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Peppermint Tea</h2>
-            <img src="./assests/peppermint_tea.jpeg" alt="Peppermint Tea">
-            <p>Peppermint tea is an invigorating herbal infusion that delivers a refreshing burst of minty flavor. It's caffeine-free and great for digestion.</p>
-            <button onclick="addToCart('Peppermint Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Chai</h2>
-            <img src="./assests/chai_tea.jpeg" alt="Chai">
-            <p>Chai is a spiced black tea popular in India. It's a flavorful blend of black tea, spices, and milk, known for its warmth and bold taste.</p>
-            <button onclick="addToCart('Chai')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Jasmine Tea</h2>
-            <img src="./assests/jasmine_tea.jpg" alt="Jasmine Tea">
-            <p>Jasmine tea is a fragrant green tea infused with jasmine flowers. It offers a delightful floral aroma and a mild, soothing taste.</p>
-            <button onclick="addToCart('Jasmine Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Rooibos Tea</h2>
-            <img src="./assests/rooibos_tea.jpeg" alt="Rooibos Tea">
-            <p>Rooibos, or red bush tea, is a caffeine-free herbal tea from South Africa. It has a naturally sweet and earthy flavor.</p>
-            <button onclick="addToCart('Rooibos Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Darjeeling Tea</h2>
-            <img src="./assests/darjeeling_tea.webp" alt="Darjeeling Tea">
-            <p>Known as the "champagne of teas," Darjeeling tea is a black tea with a delicate and muscatel flavor, perfect for afternoon sipping.</p>
-            <button onclick="addToCart('Darjeeling Tea')">Add to Cart</button>
-        </div>
-
-        <div class="column">
-            <h2>Matcha tea</h2>
-            <img src="./assests/matcha_tea.jpg" alt="Matcha Tea">
-            <p> Matcha is a finely ground Japanese green tea, celebrated for its vibrant green color and rich, umami flavor. 
-                It's packed with antioxidants and provides a unique, energizing experience..</p>
-            <button onclick="addToCart('Matcha Tea')">Add to Cart</button>
-        </div>
-    </div>
+    <div class="catalog"></div>
 
     <div class="cart">
         <h3>Shopping Cart</h3>
-        <ul id="cart-items">
+        <ul id="cart-items" class="cartItems">
             <!-- Cart items will be displayed here -->
         </ul>
         <button onclick="goToCheckout()">Checkout</button>
     </div>
-    
+
     <script>
-    const cart = {};
+        const cart = {};
 
-    function addToCart(productName) {
-        if (cart[productName]) {
-            cart[productName]++;
-        } else {
-            cart[productName] = 1; 
+        function addToCart(productName) {
+            if (cart[productName]) {
+                cart[productName]++;
+            } else {
+                cart[productName] = 1;
+            }
+            alert(`${productName} added to cart!`);
+            displayCart();
         }
-        alert(`${productName} added to cart!`);
-        displayCart();
-    }
 
-    function displayCart() {
-        const cartItems = document.getElementById('cart-items');
-        cartItems.className = "cartItems";
-        cartItems.innerHTML = ''; 
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
 
-        for (const productName in cart) {
-            const quantity = cart[productName];
-            const li = document.createElement('li');
-            li.innerHTML = `${productName} x ${quantity}
-            <button onclick="removeFromCart('${productName}')" id = "cartButton">Remove</button>`;
-            cartItems.appendChild(li);
+            for (const productName in cart) {
+                const quantity = cart[productName];
+                const li = document.createElement('li');
+                li.innerHTML = `${productName} x ${quantity}
+                <button onclick="removeFromCart('${productName}')" id="cartButton">Remove</button>`;
+                cartItems.appendChild(li);
+            }
         }
-    }
 
-    function removeFromCart(productName) {
-        if (cart[productName] > 1) {
-            cart[productName]--;
-        } else {
-            delete cart[productName];
+        function removeFromCart(productName) {
+            if (cart[productName] > 1) {
+                cart[productName]--;
+            } else {
+                delete cart[productName];
+            }
+            displayCart();
         }
-        displayCart();
-    }
-
     </script>
 
     <!-- Footer -->
-
 </body>
+
 </html>
