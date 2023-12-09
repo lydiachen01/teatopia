@@ -133,5 +133,18 @@
         </div> 
         <!-- end of parent -->
     </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get("status");
+
+        if (status == "success") {
+            document.getElementById("logged-in").classList.remove("hidden");
+            document.getElementById("default-login").classList.add("hidden");
+        } else if (status == "failure"){
+            document.getElementById("logged-in").classList.add("hidden");
+            document.getElementById("default-login").classList.remove("hidden");
+        }
+    </script>
 </body>
 </html>
