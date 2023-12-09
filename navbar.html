@@ -112,6 +112,18 @@
                         <span class="sr-only">Open user menu</span>
                         <span class="flex items-center"><img class="h-6 w-6 mx-2 rounded-full" src="./assests/black_tea.jpg" alt="profile"></span>
                       </button>
+
+                      <script>
+                         // Show the profile menu on hover
+                        document.getElementById('logged-in').addEventListener('mouseenter', function () {
+                          document.getElementById('profile-menu').classList.remove('hidden');
+                        });
+
+                        // Hide the profile menu on mouse leave
+                        document.getElementById('logged-in').addEventListener('mouseleave', function () {
+                          this.classList.add('hidden');
+                        });
+                      </script>
                     </a>
 
                     <!-- Default Login -->
@@ -129,23 +141,14 @@
                 <div id="profile-menu">
                   <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <a href="user_profile.html" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                    <a href="#" onclick="signOutAndRedirect()" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign Out</a>
-
+                    <a href="#" onclick="" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign Out</a>
+                    <a href="#" onclick="signOutAndRedirect(event)" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign Out</a>
+                
                     <script>
-                      function signOutAndRedirect() {                    
-                          // Redirect to signout.php
-                          window.location.href = 'signout.php';
-                      }
-
-                      // Show the profile menu on hover
-                      document.querySelector('.profile-link').addEventListener('mouseenter', function () {
-                        document.getElementById('profile-menu').classList.remove('hidden');
-                      });
-
-                      // Hide the profile menu on mouse leave
-                      document.getElementById('profile-menu').addEventListener('mouseleave', function () {
-                        this.classList.add('hidden');
-                      });
+                        function signOutAndRedirect(e) {
+                            e.preventDefault();
+                            window.location.href = 'signout.php';
+                        }
                     </script>                                      
                   </div>
                 </div>
