@@ -38,7 +38,6 @@
             width: calc(50% - 20px);
             background-color: #fff;
             border: 1px solid #e0e0e0;
-            padding: 10px;
             margin: 10px;
             text-align: center;
             border-radius: 20px;
@@ -71,40 +70,6 @@
             margin-top: 80px;
         }
 
-        .cart {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            text-align: center;
-        }
-
-        .cart h3 {
-            font-size: 18px;
-            margin-top: 0;
-        }
-
-        .cart li {
-            margin-bottom: 10px;
-            padding: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cart li button {
-            background-color: #416843;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            margin-left: auto;
-        }
-
-        .cart li button:hover {
-            background-color: #094f23;
-        }
-
         button {
             background-color: #416843;
             color: #fff;
@@ -134,15 +99,6 @@
             border-radius: 10px;
         }
 
-        .cartItems {
-            margin: 0 299px;
-        }
-
-
-        .cartItems {
-            margin: 0 299px;
-        }
-
         .increment-container {
             display: flex;
             align-items: center;
@@ -166,7 +122,106 @@
             justify-content: space-around; /* Adjust as needed */
             width: 100%;
         }
-       
+
+        .cart-popup {
+        display: none;
+        position: fixed;
+        top: 90px;
+        right: 10px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        z-index: 99;
+       }
+
+        .cart-popup.show-cart {
+            display: block;
+        }
+
+        .cart-icon {
+            background-color: white;
+            border-radius: 50%;
+            padding: 10px;
+            position:fixed;
+            cursor: pointer;
+            top: 70px;
+            right:10px;
+            font-size: 30px;
+        }
+
+        .cart-notification {
+            background-color: rgb(193, 8, 8);
+            color: #fff;
+            border-radius: 50%;
+            padding: 8px 8px;
+            font-size: 10px;
+            position: absolute;
+            top: 3px;
+            right: 0;
+            display: none;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* New styles for close button */
+        .close-cart {
+            cursor: pointer;
+            font-size: 18px;
+            color: #474747; /* Adjust the color to your preference */
+        }
+
+        .close-cart:hover{
+            color:rgb(188, 184, 184);
+        }
+        
+        /* Existing styles for cart-items-popup */
+        .cartItems {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* New styles for cart item */
+        .cartItems li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+            padding: 8px 10px;
+            border-bottom: 1px hidden #ddd; /* Add a border between items */
+        }
+
+        /* New styles for remove button */
+        .cartItems li button {
+            background-color: #416843;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .cartItems li button:hover {
+            background-color: #094f23;
+        }
+        #checkout{
+            background-color: #416843;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        } 
+        .bold-text {
+            font-weight: bold;
+        }
+
+
+        
     </style>
 
     <script>
@@ -190,13 +245,13 @@
 
                         const teaName = document.createElement('h2');
                         teaName.textContent = tea.name;
+                        teaName.classList.add('bold-text');
 
                         const teaImage = document.createElement('img');
-                        teaImage.src = tea.image;
+                        teaImage.src = "./assests/"+ tea.image;
                         teaImage.alt = tea.name;
 
                         const teaDescription = document.createElement('p');
-                        console.log(tea.description);
                         teaDescription.textContent = tea.description;
 
                         // Increment buttons and display
@@ -255,21 +310,36 @@
             $("#header").load("navbar.html");
         });
     </script>
-        
-        <div class="tea-container" id="tea-container"></div>
-    
+    <!-- Add this div for the shopping cart icon -->
+    <div class="cart-icon" id="cart-icon" onclick="toggleCart()">
+        <!-- You can use an icon library or an image for the shopping cart icon -->
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-notification" id="cart-notification"></span> <!-- This will display the green dot -->
+    </div>
 
-    <div class="cart">
-        <h3>Shopping Cart</h3>
-        <ul id="cart-items" class="cartItems">
+    <!-- Add this div for the shopping cart -->
+    <div class="cart-popup" id="cart-popup">
+        <div class="cart-header">
+            <h3 style="margin: auto; font-weight: bold;">Shopping Cart</h3>&nbsp;&nbsp;&nbsp;
+            <div class="close-cart" onclick="toggleCart()">X</div>
+        </div>
+        <ul id="cart-items-popup" class="cartItems">
             <!-- Cart items will be displayed here -->
         </ul>
-        <button onclick="goToCheckout()">Checkout</button>
+        <button onclick="goToCheckout()" id ="checkout">Checkout</button>
     </div>
+        
+        <div class="tea-container" id="tea-container"></div>
 
     <script>
         const cart = {};
 
+        //function for toggling the cart
+        function toggleCart() {
+            const cartPopup = document.getElementById('cart-popup');
+            cartPopup.classList.toggle('show-cart');
+            displayCart();
+        }
         // Function to update quantity in the cart
         function addToCart(productName) {
             if (cart[productName]) {
@@ -278,20 +348,31 @@
                 cart[productName] = 1;
             }
             displayCart();
+            updateCartNotification();
         }
 
         function displayCart() {
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = '';
+            const cartItems = document.getElementById('cart-items-popup');
+            
+            // Check if the cart is empty
+            if (Object.keys(cart).length === 0) {
+                cartItems.innerHTML = '<li>You have no items in your cart</li>';
+            } else {
+                cartItems.innerHTML = '';
 
-            for (const productName in cart) {
-                const quantity = cart[productName];
-                const li = document.createElement('li');
-                li.innerHTML = `${productName} x ${quantity}
-                <button onclick="removeFromCart('${productName}')" id="cartButton">Remove</button>`;
-                cartItems.appendChild(li);
+                for (const productName in cart) {
+                    const quantity = cart[productName];
+                    const li = document.createElement('li');
+                    li.innerHTML = `${productName} x ${quantity}
+                    &nbsp;&nbsp;&nbsp;<button onclick="removeFromCart('${productName}')" id="cartButton">Remove</button>`;
+                    cartItems.appendChild(li);
+                }
             }
+
+            // Update the cart notification
+            updateCartNotification();
         }
+
 
         function removeFromCart(productName) {
             if (cart[productName] > 1) {
@@ -299,8 +380,40 @@
             } else {
                 delete cart[productName];
             }
+
+            // Update the cart display
             displayCart();
+
+            // Find the relevant column element
+            const teaItem = Array.from(document.querySelectorAll('.column')).find(column => {
+                const h2 = column.querySelector('h2');
+                return h2 && h2.textContent.includes(productName);
+            });
+
+            // If the element is found, update the quantity display
+            if (teaItem) {
+                const quantityDisplay = teaItem.querySelector('.quantity-display');
+                if (quantityDisplay) {
+                    quantityDisplay.textContent = cart[productName] || 0;
+                }
+            }
+
+            // Update the cart notification
+            updateCartNotification();
         }
+
+
+
+        function updateCartNotification() {
+            const cartNotification = document.getElementById('cart-notification');
+            const cartItemCount = Object.values(cart).reduce((total, count) => total + count, 0);
+            cartNotification.style.display = cartItemCount > 0 ? 'block' : 'none';
+        }
+
+        function goToCheckout() {
+        const cartData = encodeURIComponent(JSON.stringify(cart));
+        window.location.href = `checkout.html?cartData=${cartData}`;
+    }
     </script>
 
     <!-- Footer -->
