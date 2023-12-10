@@ -123,6 +123,12 @@
 
     const teaPrices = <?php echo json_encode($prices); ?>;
 
+    if (cart) {
+    console.log('Cart:', cart);
+} else {
+    console.log('Cart is empty or undefined.');
+}
+
     function getUrlParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
