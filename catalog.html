@@ -27,7 +27,7 @@
             list-style: none;
         }
 
-        .tea-container {
+        .tea-container1, .tea-container2 {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -37,6 +37,9 @@
         }
 
         .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: calc(33.33% - 20px);
             background-color: #fff;
             border: 1px solid #e0e0e0;
@@ -60,13 +63,32 @@
             margin-bottom: 20px;
             margin-left: 10px;
             margin-right: 10px;
+            overflow: hidden;
         }
 
         .column img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px 20px 0 0;
+            max-height: 40vh;
+            border-radius: 10px 10px 0 0;
         }
+
+        .increment-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .increment-button {
+            cursor: pointer;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            font-size: 16px;
+            margin: 0 2px;
+        }
+
+
 
         button {
             background-color: #416843;
@@ -83,27 +105,8 @@
             background-color: #094f23;
         }
 
-        .column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .column .description-container {
             max-height: 100px;
-            overflow: hidden;
-        }
-
-        .column h2 {
-            margin: 20px 0;
-        }
-
-        .column p {
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
             overflow: hidden;
         }
 
@@ -111,11 +114,6 @@
             .column {
                 width: calc(50% - 20px);
             }
-        }
-
-        .column img {
-            max-height: 40vh;
-            border-radius: 10px 10px 0 0;
         }
 
         .increment-container {
@@ -151,7 +149,7 @@
         .cart-popup.show-cart {
             display: block;
         }
-
+        
         .cart-icon {
             background-color: white;
             border-radius: 50%;
@@ -162,6 +160,8 @@
             right: 10px;
             font-size: 30px;
             transition: background-color 0.3s ease-in-out;
+            width: 58px; /* Set the width */
+            height: 58px; /* Set the height */
         }
 
         .cart-icon:hover {
@@ -238,6 +238,84 @@
         .bold-text {
             font-weight: bold;
         }
+
+        .tea-section {
+            margin: 0 3em;
+            padding: 20px 0 50px 0;
+            border-bottom: olivedrab 8px double;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .grid-column-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .blend-image-container {
+            position: relative;
+        }
+        
+        .blend-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .custom-blend-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+    
+        .blend-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    
+        .customize-options {
+            text-align: center;
+        }
+    
+        .quantity-buttons-container {
+            text-align: center;
+        }
+
+        #checkbox-options label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 2px solid yellowgreen;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        #checkbox-options label:hover {
+            background-color: yellowgreen; /* Add a hover effect */
+        }
+
+        .custom-blend-container .grid {
+            display: grid;
+            gap: 20px; /* Adjust this value as needed to control the space between divs */
+        }
+        
+        .custom-blend-container .grid-column-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+
     </style>
 
     <script>
@@ -252,20 +330,93 @@
             })
             .then(teas => {
                 if (Array.isArray(teas)) {
-                    const teaContainer = document.getElementById('tea-container');
+                    const teaContainer1 = document.getElementById('tea-container1');
+                    const teaContainer2 = document.getElementById('tea-container2');
                     const checkboxList = document.getElementById('checkbox-options');
                     let objectCount = 0;
 
-                    teas.forEach(tea => {
-                        const teaName = document.createElement('input');
-                        teaName.type = "checkbox";
-                        teaName.textContent = tea.name;
-                        checkboxList.appendChild(teaName);
-                        checkboxList.appendChild(document.createElement('br'));
-                    })
+                    const regularToShow = teas.slice(0, 9); // First 10 products
+                    const premadeToShow = teas.slice(9, 12); 
+
+                    // For the custom options 
+                    regularToShow.forEach(tea => {
+                        const checkboxContainer = document.createElement('div'); // Create a container for checkbox and label
+
+                        const teaCheckbox = document.createElement('input');
+                        teaCheckbox.type = 'checkbox';
+                        teaCheckbox.id = `teaCheckbox_${tea.name}`; // Set a unique ID for the checkbox if needed
+
+                        const teaLabel = document.createElement('label');
+                        teaLabel.textContent = tea.name;
+                        teaLabel.setAttribute('for', `teaCheckbox_${tea.name}`); // Set the 'for' attribute to link with the checkbox
+
+                        teaCheckbox.onchange = function () {
+                            handleCheckboxChange(teaCheckbox);
+                        };
+
+                        checkboxContainer.appendChild(teaCheckbox);
+                        checkboxContainer.appendChild(teaLabel);
+                        checkboxList.appendChild(checkboxContainer);
+                    });
                     
-                    // Display tea names and increment buttons
-                    teas.forEach(tea => {
+                    // For the premade options
+                    premadeToShow.forEach(tea => {
+                        const teaItem = document.createElement('div');
+                        teaItem.classList.add('column');
+                
+                        const teaName = document.createElement('h2');
+                        teaName.textContent = tea.name;
+                        teaName.classList.add('bold-text');
+                
+                        const teaImage = document.createElement('img');
+                        if (tea.name == "Relaxing Blend") {
+                            teaImage.src = "https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/f6606269538003.612cb185a506e.jpg";
+                        } else if (tea.name == "Spicy Chai Delight") {
+                            teaImage.src = "https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/f5cb2569538003.612cb185a57c3.jpg";
+                        } else if (tea.name == "Floral Harmony") {
+                            teaImage.src = "https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/aed2a969538003.612cb185a47b5.jpg";
+                        }
+                        teaImage.alt = tea.name;
+                
+                        const teaDescription = document.createElement('p');
+                        teaDescription.textContent = tea.description;
+                
+                        // Increment buttons and display
+                        const incrementContainer = document.createElement('div');
+                        incrementContainer.classList.add('increment-container');
+                
+                        const minusButton = document.createElement('button');
+                        minusButton.classList.add('increment-button');
+                        minusButton.textContent = '-';
+                        minusButton.onclick = function () {
+                            removeFromCart(tea.name);
+                            quantityDisplay.textContent = cart[tea.name] || 0;
+                        };
+                
+                        const quantityDisplay = document.createElement('span');
+                        quantityDisplay.classList.add('quantity-display');
+                        quantityDisplay.textContent = cart[tea.name] || 0;
+                
+                        const plusButton = document.createElement('button');
+                        plusButton.classList.add('increment-button');
+                        plusButton.textContent = '+';
+                        plusButton.onclick = function () {
+                            addToCart(tea.name);
+                            quantityDisplay.textContent = cart[tea.name] || 0;
+                        };
+                
+                        incrementContainer.appendChild(minusButton);
+                        incrementContainer.appendChild(quantityDisplay);
+                        incrementContainer.appendChild(plusButton);
+                        teaItem.appendChild(teaImage);
+                        teaItem.appendChild(teaName);
+                        teaItem.appendChild(teaDescription);
+                        teaItem.appendChild(incrementContainer);
+                        teaContainer1.appendChild(teaItem);      
+                    });       
+
+                    // For the regular options
+                    regularToShow.forEach(tea => {
                         const teaItem = document.createElement('div');
                         teaItem.classList.add('column');
                 
@@ -311,27 +462,7 @@
                         teaItem.appendChild(teaName);
                         teaItem.appendChild(teaDescription);
                         teaItem.appendChild(incrementContainer);
-                        teaContainer.appendChild(teaItem);      
-                        
-                        if (objectCount === 1) {
-                            const sectionTitle = document.createElement('div');
-                            sectionTitle.innerHTML = "<div>Premade Tea Blends</div>";
-                            sectionTitle.classList.add("sectionHeader");
-                            sectionTitle.style.borderBottom = "orange 2px double";
-                            teaContainer.appendChild(sectionTitle);
-                            teaContainer.appendChild(document.createElement("br"));
-
-                        } else if (objectCount === 4) {
-                            const sectionTitle = document.createElement('div');
-                            sectionTitle.innerHTML = "<div>Regular Tea</div>";
-                            sectionTitle.classList.add("sectionHeader");
-                            sectionTitle.style.borderBottom = "orange 2px double";
-                            teaContainer.appendChild(sectionTitle);
-                            teaContainer.appendChild(document.createElement("br"));
-
-                        }
-
-                        objectCount++;
+                        teaContainer2.appendChild(teaItem);      
                     });                
                 } else {
                     console.error('Invalid data format received from the server.');
@@ -356,7 +487,7 @@
         });
     </script>
     <!-- Add this div for the shopping cart icon -->
-    <div class="cart-icon" id="cart-icon" onclick="toggleCart()">
+    <div class="cart-icon border border-solid border-gray-300" id="cart-icon" onclick="toggleCart()">
         <!-- You can use an icon library or an image for the shopping cart icon -->
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-notification" id="cart-notification"></span> <!-- This will display the green dot -->
@@ -374,18 +505,70 @@
         <button onclick="goToCheckout()" id ="checkout">Checkout</button>
     </div>
     
-    <section style="border:#416843 5px solid">
-        <h1>Customize Your Own Blend</h1>
-        <div class="grid grid-column-2">
-            <div>
-                <img>
-                <button></button>
+
+    <!-- Start of Tea Sections -->
+    <!-- CUSTOMIZE -->
+    <section id="custom-blend-section" class="tea-section" style="padding-top: 6em; margin: 0 3em;">
+        <h2 class="section-title">Customize Your Own Blend</h2>
+        <div class="custom-blend-container">
+            <div class="blend-image-container">
+                <img src="path_to_blend_image.jpg" alt="Custom Blend">
             </div>
-            <div class="checkbox-options" id="checkbox-options"></div>
+            <div class="customize-options">
+                <label style="padding-bottom: 2em;">SELECT UP TO 5 TYPES OF TEA</label>
+                <p id="checkbox-feedback" style="color: red; padding-bottom: 1em;"></p>
+                <div class="checkbox-options grid grid-cols-3 " id="checkbox-options">
+                    <!-- Checkbox items go here -->
+                    <!-- Use the code you have for checkboxes -->
+                </div>
+            </div>
+            <div class="quantity-buttons-container">
+                <div class="increment-container">
+                    <button class="increment-button">-</button>
+                    <span class="quantity-display">0</span>
+                    <button class="increment-button">+</button>
+                </div>
+                <button class="add-to-cart-button">Add to Cart</button>
+            </div>
         </div>
+    
+        <script>
+            // Function to handle checkbox changes
+            function handleCheckboxChange(checkbox) {
+                const maxAllowed = 5;
+                const minRequired = 2;
+    
+                // Get all checkboxes within the checkbox-options div
+                const checkboxes = document.querySelectorAll('.checkbox-options input[type="checkbox"]');
+    
+                // Count the number of checked checkboxes
+                const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+    
+                // Display feedback message
+                const feedbackMessage = document.getElementById('checkbox-feedback');
+                if (checkedCount < minRequired) {
+                    feedbackMessage.textContent = 'Please select at least two types of tea.';
+                } else if (checkedCount > maxAllowed) {
+                    feedbackMessage.textContent = 'You can select at most five types of tea.';
+                    checkbox.checked = false; // Uncheck the last checked checkbox
+                } else {
+                    feedbackMessage.textContent = '';
+                }
+            }
+        </script>
+    </section>
+    
+    <!-- PREMADE -->
+    <section class="tea-section">
+        <h2 class="section-title">Premade Blends</h2>
+    <div class="tea-container1" id="tea-container1"></div>
     </section>
 
-    <div class="tea-container" id="tea-container"></div>
+    <!-- REGULAR -->
+    <section class="tea-section">
+        <h2 class="section-title">Regular Tea</h2>
+        <div class="tea-container2" id="tea-container2"></div>
+    </section>
     
     <script>
         const cart = {};
