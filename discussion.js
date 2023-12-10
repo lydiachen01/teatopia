@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Update posts container with new post
-                const postElement = document.createElement('div');
-                postElement.textContent = `${data.username}: ${data.title} - ${data.content}`;
+                const postElement = createPostElement(data);
                 postsContainer.appendChild(postElement);
 
                 // Clear the form
@@ -33,10 +32,39 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(posts => {
             posts.forEach(post => {
-                const postElement = document.createElement('div');
-                postElement.textContent = `${post.username}: ${post.title} - ${post.content}`;
+                const postElement = createPostElement(post);
                 postsContainer.appendChild(postElement);
             });
         })
         .catch(error => console.error('Error:', error));
 });
+
+function createPostElement(post) {
+    const postContainer = document.createElement('div');
+
+    // Style for the username
+    const usernameElement = document.createElement('div');
+    usernameElement.style.fontSize = '18px';
+    usernameElement.style.fontWeight = 'bold';
+    usernameElement.textContent = post.username;
+
+    // Style for the title
+    const titleElement = document.createElement('div');
+    titleElement.style.fontSize = '14px';
+    titleElement.style.fontWeight = 'bold';
+    titleElement.textContent = post.title;
+
+    // Style for the content
+    const contentElement = document.createElement('div');
+    contentElement.textContent = post.content;
+
+    // Append elements to the post container
+    postContainer.appendChild(usernameElement);
+    postContainer.appendChild(titleElement);
+    postContainer.appendChild(contentElement);
+
+    // Apply some margin between posts
+    postContainer.style.marginBottom = '20px';
+
+    return postContainer;
+}

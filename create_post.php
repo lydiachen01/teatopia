@@ -38,6 +38,10 @@ if (isset($_SESSION['userID'])) {
 
             if ($result->num_rows > 0) {
                 $post = $result->fetch_assoc();
+
+                // Add the username to the $post array
+                $post['username'] = $username;
+
                 echo json_encode($post);
             } else {
                 echo json_encode(['error' => 'Error fetching post']);
