@@ -12,8 +12,8 @@ if ($conn->connect_error) {
 }
 
 // Check if the user is logged in
-if (isset($_SESSION['userID'])) {
-    $userId = $_SESSION['userID'];
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
 
     // Fetch user data based on user ID
     $selectUserQuery = "SELECT * FROM user_table WHERE userID = $userId";
@@ -29,18 +29,21 @@ if (isset($_SESSION['userID'])) {
         if ($content && $title) {
             // Insert post data into post_table
             $postInsertQuery = "INSERT INTO post_table (content, title, userID) VALUES ('$content', '$title', '$userId')";
-            $conn->query($postInsertQuery);
+            
+            if ($conn->query($postInsertQuery) === TRUE) {
+                // Fetch the inserted post for response
+                $postId = $conn->insert_id;
+                $selectPostQuery = "SELECT * FROM post_table WHERE postID = $postId";
+                $result = $conn->query($selectPostQuery);
 
-            // Fetch the inserted post for response
-            $postId = $conn->insert_id;
-            $selectPostQuery = "SELECT * FROM post_table WHERE postID = $postId";
-            $result = $conn->query($selectPostQuery);
-
-            if ($result->num_rows > 0) {
-                $post = $result->fetch_assoc();
-                echo json_encode($post);
+                if ($result->num_rows > 0) {
+                    $post = $result->fetch_assoc();
+                    echo json_encode($post);
+                } else {
+                    echo json_encode(['error' => 'Error fetching post']);
+                }
             } else {
-                echo json_encode(['error' => 'Error fetching post']);
+                echo json_encode(['error' => 'Error inserting post: ' . $conn->error]);
             }
         } else {
             echo json_encode(['error' => 'Invalid input']);
