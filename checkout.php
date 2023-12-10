@@ -39,8 +39,9 @@
             border-radius: 5px;
             padding: 10px;
             cursor: pointer;
-            display: block; 
-            margin: 30px auto;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
         }
         button:hover {
             background-color: #094f23; 
