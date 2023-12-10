@@ -85,9 +85,9 @@
     <button id="thankYouButton">Complete Purchase</button>
     
     <p id="thankYouMessage" style="display: none;">Thank you for shopping with us!!</p>
-    <script>
-        
 
+    <script>
+    
     document.addEventListener("DOMContentLoaded", function () {
     const checkoutItems = document.getElementById('checkout-items');
     const subtotalElement = document.getElementById('subtotal');
@@ -97,20 +97,30 @@
     const thankYouMessage = document.getElementById('thankYouMessage');
     const checkoutTitle = document.getElementById('cTitle');
 
-    const teaPrices = {
-        'Green Tea': 2.99,
-        'Black Tea': 3.49,
-        'Chamomile Tea': 2.79,
-        'Oolong Tea': 3.29,
-        'Earl Grey Tea': 3.99,
-        'White Tea': 2.89,
-        'Peppermint Tea': 2.49,
-        'Chai': 3.69,
-        'Jasmine Tea': 2.99,
-        'Rooibos Tea': 2.59,
-        'Darjeeling Tea': 4.29,
-        'Matcha Tea': 4.99,
-        };
+    <?php
+            // Replace the following lines with actual database connection and query code
+            $servername = "localhost";
+            $username = "u9rnmkwnhqk3j";
+            $password = "@*2l@2f7i%&2";
+            $dbname = "dbygr11xzpv4y";
+
+            $conn = mysqli_connect($host, $user, $password, $database);
+
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+
+            $query = "SELECT product_name, price FROM product_table";
+            $result = mysqli_query($conn, $query);
+
+            $prices = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $prices[$row['product_name']] = $row['price'];
+            }
+
+            mysqli_close($conn);
+        ?>
 
     function getUrlParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);
