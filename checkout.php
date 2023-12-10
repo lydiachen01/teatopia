@@ -98,12 +98,8 @@
 
             <?php
             // Replace the following lines with actual database connection and query code
-            $host = "localhost";
-            $user = "u9rnmkwnhqk3j";
-            $password = "@*2l@2f7i%&2";
-            $dbname = "dbygr11xzpv4y";
 
-            $conn = mysqli_connect($host, $user, $password, $dbname);
+            $conn = new mysqli("localhost", "u9rnmkwnhqk3j", "@*2l@2f7i%&2", "dbygr11xzpv4y5");
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
@@ -122,6 +118,12 @@
             ?>
 
     const teaPrices = <?php echo json_encode($prices); ?>;
+
+    if (cart) {
+    console.log('Cart:', cart);
+} else {
+    console.log('Cart is empty or undefined.');
+}
 
     function getUrlParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);

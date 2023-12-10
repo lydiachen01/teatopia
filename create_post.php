@@ -3,12 +3,8 @@
 session_start();
 
 // Assuming you have a database connection
-$servername = "localhost";
-$username = "u9rnmkwnhqk3j";
-$password = "@*2l@2f7i%&2";
-$dbname = "dbygr11xzpv4y";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli("localhost", "u9rnmkwnhqk3j", "@*2l@2f7i%&2", "dbygr11xzpv4y5");
 
 // Check the connection
 if ($conn->connect_error) {
