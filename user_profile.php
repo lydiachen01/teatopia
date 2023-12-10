@@ -24,6 +24,25 @@ if ($result->num_rows === 1) {
 }
 
 $stmt->close();
+
+$stmt_orders = $conn->prepare("SELECT ot.orderID, oi.quantity, pt.productName
+                            FROM order_table ot
+                            JOIN OrderItem oi ON ot.orderID = oi.orderID
+                            JOIN product_table pt ON oi.productID = pt.productID
+                            WHERE ot.userID = ?"
+);
+
+$stmt_orders->bind_param("i", $userID);
+$stmt_orders->execute();
+$result_orders = $stmt_orders->get_result();
+
+$orders = [];
+while ($row = $result_orders->fetch_assoc()) {
+    $orders[] = $row;
+}
+
+$stmt_orders->close();
+
 $conn->close();
 ?>
 
@@ -140,6 +159,7 @@ $conn->close();
             </div>
 
             <div class="right">
+
                 <!-- User Info/Contact Info -->
                 <div id="user-info">
                     <label class="block text-lg mb-2">User Info</label>
@@ -152,8 +172,17 @@ $conn->close();
                 <!-- Order History -->
                 <div id="order-history" class="mt-4 block">
                     <label class="block text-lg">Order History</label>
-                    <div class="box"></div>
+                    <?php if (!empty($orders)): ?>
+                        <?php foreach ($orders as $order): ?>
+                            <div class="box">
+                                <div><?php echo $order['productName']; ?> x <?php echo $order['quantity']; ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div>No order history available.</div>
+                    <?php endif; ?>
                 </div>
+                
             </div>
             <!-- end of profile -->
         </div>
