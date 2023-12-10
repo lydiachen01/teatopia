@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(data => {
+                if (data.error) {
+                    console.error('Error:', data.error);
+                    return;
+                }
+
                 // Update posts container with new post
                 const postElement = document.createElement('div');
                 postElement.textContent = `${data.username}: ${data.title} - ${data.content}`;
@@ -35,4 +40,3 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error:', error));
 });
-
