@@ -22,11 +22,10 @@
             padding-top: 120px;
         }
         li {
-            margin: 10px 0; /* Adjusted margin for better spacing */
-            display: flex;
-            justify-content: space-between;
+            margin: 10px;
         }
         strong {
+            display:block;
             text-align: right;
             margin-right: 20px;
         }
@@ -37,9 +36,6 @@
             border-radius: 5px;
             padding: 10px;
             cursor: pointer;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
         }
         button:hover {
             background-color: #094f23; 
@@ -140,7 +136,7 @@
                 subtotal += teaSubtotal;
 
                 const li = document.createElement('li');
-                li.innerHTML = `<span>${productName}</span><span>x ${quantity}</span><strong>$${teaSubtotal.toFixed(2)}</strong>`;
+                li.innerHTML = `${productName} x ${quantity}<strong>$${teaSubtotal.toFixed(2)}</strong>`;
                 checkoutItems.appendChild(li);
             }
             const tax = subtotal * taxRate;
