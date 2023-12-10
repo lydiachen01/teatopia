@@ -45,7 +45,15 @@ $conn->close();
         crossorigin="anonymous">
     </script>
     <style>
-    
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            font-size: 16px;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
         .parent {
             display: flex;
             position: relative;
@@ -53,7 +61,7 @@ $conn->close();
             align-items: center;
             margin: 0;
         }
-        
+
         .profile {
             display: block;
             margin: 100px 10%;
@@ -61,22 +69,40 @@ $conn->close();
             padding: 2em;
             font-family: 'Fraunces', serif;
             border: 1px solid olivedrab;
+            background-color: #fff; /* Set background color */
+            border-radius: 20px; /* Add border-radius for rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
         }
 
         .left {
             position: relative;
+            padding-right: 20px; /* Add padding to separate from the right content */
         }
 
-        .left div{
-            padding: 1em;
+        .category {
+            position: relative;
+        }
+
+        .left nav {
+            background-color: #f5f5f5; /* Set background color for the sidebar */
+            border-radius: 10px; /* Add border-radius for rounded corners */
+            padding: 10px; /* Add padding */
+        }
+
+        .left a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .left a:hover {
+            background-color: #e0e0e0; /* Add a hover effect */
         }
 
         .right {
-            border-left: 1px olivedrab solid;
-        }
-
-        .right {
-            padding: 0 0 0 80px; 
+            padding: 0 0 0 20px; /* Adjust padding */
         }
 
         label {
@@ -84,27 +110,13 @@ $conn->close();
             font-weight: bold;
         }
 
-        .box{
+        .box {
             height: 160px;
             margin-bottom: 80px;
             text-align: left;
             background-color: rgba(106, 142, 35, 0.225);
-        }
-
-        .profile-img {
-            display: block;
-            height: 2em;
-            width: 2em;
-            background-color: gray;
-        }
-
-        .category {
-            position: relative;
-            z-index: 0;
-        }
-
-        .category div:hover{
-            background-color: rgba(106, 142, 35, 0.451);
+            padding: 20px; /* Add padding */
+            border-radius: 10px; /* Add border-radius for rounded corners */
         }
     </style>
 </head>
@@ -118,7 +130,7 @@ $conn->close();
     </script>
 
     <div class="parent">
-        <div class="profile grid-cols-2 grid mx-6">
+        <div class="profile grid-cols-2 grid mx-6" style="width:1200px;">
             <!-- Sidebar -->
             <div class="left">
                 <nav class="category">
@@ -130,7 +142,7 @@ $conn->close();
             <div class="right">
                 <!-- User Info/Contact Info -->
                 <div id="user-info">
-                    <label>User Info</label>
+                    <label class="block text-lg mb-2">User Info</label>
                     <div class="box">
                         <div>Username: <?php echo $username; ?></div>
                         <div>Email: <?php echo $email; ?></div>
@@ -139,7 +151,7 @@ $conn->close();
 
                 <!-- Order History -->
                 <div id="order-history" class="mt-4 block">
-                    <label class="block font-bold text-lg mb-2">Order History</label>
+                    <label class="block text-lg">Order History</label>
                     <div class="box"></div>
                 </div>
             </div>

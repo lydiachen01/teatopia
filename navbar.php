@@ -36,6 +36,7 @@ if ($result->num_rows === 1) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="/dist/output.css" rel="stylesheet">
@@ -50,7 +51,9 @@ if ($result->num_rows === 1) {
         display: block;
         position: fixed;
         background-color: white;
-        font-family: 'Inter', sans-serif;
+        /* font-family: 'Inter', sans-serif; */
+        /* font-family: 'Fraunces', serif; */
+        font-family: 'Poppins', sans-serif;
         width: 100%;
         z-index: 999;
       }
@@ -129,7 +132,6 @@ if ($result->num_rows === 1) {
                   <a href="catalog.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Shop</a>
                   <a href="benefits_of_tea.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Benefits</a>
                   <a href="contacts.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Contact</a>
-                  <a href="location.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Locations</a>
                 </div>
               </div>
             </div>
