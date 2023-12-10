@@ -66,45 +66,44 @@
 </head>
 <body>
     <!-- Navbar Component -->
-    <div id="header" style="z-index:100;"></div>
+    <div id="header" style="z-index: 100;"></div>
     <script>
-      $(function() {
-        $("#header").load("navbar.php");
-      });
+        $(function () {
+            $("#header").load("navbar.php");
+        });
     </script>
 
     <div id="checkoutPage">
-    <h1 style="text-align: center;" id = cTitle>Checkout</h1>
-    <ol id="checkout-items">
-        <!-- Cart items will be displayed here -->
-    </ol>
-    <p id="subtotal">Subtotal: $0.00</p>
-    <p id="tax">Tax (6.25%): $0.00</p>
-    <p id="total" style="font-weight: 1000;">Total: $0.00</p>
-</div>
+        <h1 style="text-align: center;" id="cTitle">Checkout</h1>
+        <ol id="checkout-items">
+            <!-- Cart items will be displayed here -->
+        </ol>
+        <p id="subtotal">Subtotal: $0.00</p>
+        <p id="tax">Tax (6.25%): $0.00</p>
+        <p id="total" style="font-weight: 1000;">Total: $0.00</p>
+    </div>
     <button id="thankYouButton">Complete Purchase</button>
-    
+
     <p id="thankYouMessage" style="display: none;">Thank you for shopping with us!!</p>
 
     <script>
-    
-    document.addEventListener("DOMContentLoaded", function () {
-    const checkoutItems = document.getElementById('checkout-items');
-    const subtotalElement = document.getElementById('subtotal');
-    const taxElement = document.getElementById('tax');
-    const totalElement = document.getElementById('total');
-    const thankYouButton = document.getElementById('thankYouButton');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-    const checkoutTitle = document.getElementById('cTitle');
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkoutItems = document.getElementById('checkout-items');
+            const subtotalElement = document.getElementById('subtotal');
+            const taxElement = document.getElementById('tax');
+            const totalElement = document.getElementById('total');
+            const thankYouButton = document.getElementById('thankYouButton');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            const checkoutTitle = document.getElementById('cTitle');
 
-    <?php
+            <?php
             // Replace the following lines with actual database connection and query code
-            $servername = "localhost";
-            $username = "u9rnmkwnhqk3j";
+            $host = "localhost";
+            $user = "u9rnmkwnhqk3j";
             $password = "@*2l@2f7i%&2";
             $dbname = "dbygr11xzpv4y";
 
-            $conn = mysqli_connect($host, $user, $password, $database);
+            $conn = mysqli_connect($host, $user, $password, $dbname);
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
@@ -120,7 +119,9 @@
             }
 
             mysqli_close($conn);
-        ?>
+            ?>
+
+    const teaPrices = <?php echo json_encode($prices); ?>;
 
     function getUrlParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);
