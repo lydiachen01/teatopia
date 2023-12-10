@@ -7,8 +7,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch posts from the database
-$selectPostsQuery = "SELECT * FROM post_table";
+// Fetch posts with associated usernames from the database
+$selectPostsQuery = "SELECT post_table.*, user_table.username 
+                     FROM post_table 
+                     JOIN user_table ON post_table.userID = user_table.userID";
 $result = $conn->query($selectPostsQuery);
 
 if ($result->num_rows > 0) {
