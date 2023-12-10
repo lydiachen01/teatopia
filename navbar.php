@@ -1,5 +1,30 @@
 <?php
 session_start();
+
+$conn = new mysqli("localhost", "u9rnmkwnhqk3j", "@*2l@2f7i%&2", "dbygr11xzpv4y5");
+
+if ($conn->connect_error) {
+  // Provide a JSON-formatted error response
+  header('Content-Type: application/json');
+  echo json_encode(['error' => 'Connection failed: ' . $conn->connect_error]);
+  exit;
+}
+
+// Query to fetch tea names from the database
+$sql = "SELECT productName AS name, image, description FROM product_table";
+$result = $conn->query($sql);
+
+$userID = $_SESSION['userID'];
+
+$query = $conn->prepare("SELECT * FROM user_table WHERE userID = ?");
+$query->bind_param("i", $userID);
+$query->execute();
+$result = $query->get_result();
+
+if ($result->num_rows === 1) {
+  $userDetails = $result->fetch_assoc();
+  $username = $userDetails['username'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +137,14 @@ session_start();
               <!-- Profile dropdown -->
               <div class="relative ml-3" id="user-menu">
                 <div style="display: flex;">
-                  
+                  <!-- Display Username -->
+                  <div style="
+                      font-size: 16px; 
+                      font-weight: normal; 
+                      place-items: center; 
+                      margin-top: 3px; 
+                      font-family:"><?php echo $username?></div>  
+
                   <!-- Checkout and Profile Icons -->
                   <div>
                     <!-- Tea Profile Picture -->

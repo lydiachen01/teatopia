@@ -21,9 +21,6 @@ if ($result->num_rows === 1) {
     $userDetails = $result->fetch_assoc();
     $email = $userDetails['email'];
     $username = $userDetails['username'];
-} else {
-    // Handle the case where the user is not found
-    echo "User not found";
 }
 
 $stmt->close();
