@@ -4,21 +4,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to create a post element
     function createPostElement(post) {
-        const postElement = document.createElement('div');
-        postElement.innerHTML = `<strong>${post.username}</strong>: <span style="font-weight: bold;">${post.title}</span> - ${post.content}`;
-        return postElement;
+        const postContainer = document.createElement('div');
+    
+        // Style for the username
+        const usernameElement = document.createElement('div');
+        usernameElement.style.fontSize = '18px';
+        usernameElement.style.fontWeight = 'bold';
+        usernameElement.textContent = post.username || 'Anonymous'; // Default to 'Anonymous' if username is missing
+    
+        // Style for the title
+        const titleElement = document.createElement('div');
+        titleElement.style.fontSize = '14px';
+        titleElement.style.fontWeight = 'bold';
+        titleElement.textContent = post.title;
+    
+        // Style for the content
+        const contentElement = document.createElement('div');
+        contentElement.textContent = post.content;
+    
+        // Append elements to the post container
+        postContainer.appendChild(usernameElement);
+        postContainer.appendChild(titleElement);
+        postContainer.appendChild(contentElement);
+    
+        // Apply some margin between posts
+        postContainer.style.marginBottom = '20px';
+    
+        return postContainer;
     }
 
     // Fetch initial posts
     fetch('fetch_posts.php')
-        .then(response => response.json())
-        .then(posts => {
-            posts.forEach(post => {
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error fetching posts: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(posts => {
+        if (Array.isArray(posts)) {
+            posts.reverse().forEach(post => {
                 const postElement = createPostElement(post);
                 postsContainer.appendChild(postElement);
             });
-        })
-        .catch(error => console.error('Error fetching posts:', error));
+        } else {
+            console.error('Error fetching posts: Invalid response format');
+        }
+    })
+    .catch(error => console.error('Error fetching posts:', error));
 
     postForm.addEventListener('submit', function (event) {
         event.preventDefault();
