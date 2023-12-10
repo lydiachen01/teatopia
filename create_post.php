@@ -12,8 +12,8 @@ if ($conn->connect_error) {
 }
 
 // Check if the user is logged in
-if (isset($_SESSION['user_id'])) {
-    $userId = $_SESSION['user_id'];
+if (isset($_SESSION['userID'])) {
+    $userId = $_SESSION['userID'];
 
     // Fetch user data based on user ID
     $selectUserQuery = "SELECT * FROM user_table WHERE userID = $userId";
