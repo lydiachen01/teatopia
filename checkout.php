@@ -110,13 +110,13 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $query = "SELECT product_name, price FROM product_table";
+            $query = "SELECT productName, price FROM product_table";
             $result = mysqli_query($conn, $query);
 
             $prices = array();
 
             while ($row = mysqli_fetch_assoc($result)) {
-                $prices[$row['product_name']] = $row['price'];
+                $prices[$row['productName']] = $row['price'];
             }
 
             mysqli_close($conn);
