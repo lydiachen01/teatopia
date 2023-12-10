@@ -91,8 +91,17 @@
         }
 
         .column {
-            padding: 2vh;
+            width: calc(33.33% - 20px);
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            margin: 10px;
+            text-align: center;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            align-items: center; /* Center items horizontally */
         }
+
 
         .column img {
             max-height: 40vh;
@@ -307,7 +316,7 @@
     <script src="jquery.js"></script>
     <script>
         $(function () {
-            $("#header").load("navbar.html");
+            $("#header").load("navbar.php");
         });
     </script>
     <!-- Add this div for the shopping cart icon -->
