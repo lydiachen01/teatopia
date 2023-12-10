@@ -12,9 +12,6 @@
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="styles.css">
@@ -25,10 +22,11 @@
             padding-top: 120px;
         }
         li {
-            margin: 10px;
+            margin: 10px 0; /* Adjusted margin for better spacing */
+            display: flex;
+            justify-content: space-between;
         }
         strong {
-            display:block;
             text-align: right;
             margin-right: 20px;
         }
@@ -78,8 +76,9 @@
         <p id="subtotal">Subtotal: $0.00</p>
         <p id="tax">Tax (6.25%): $0.00</p>
         <p id="total" style="font-weight: 1000;">Total: $0.00</p>
+
+        <button id="thankYouButton">Complete Purchase</button>
     </div>
-    <button id="thankYouButton">Complete Purchase</button>
 
     <p id="thankYouMessage" style="display: none;">Thank you for shopping with us!!</p>
 
@@ -141,7 +140,7 @@
                 subtotal += teaSubtotal;
 
                 const li = document.createElement('li');
-                li.innerHTML = `${productName} x ${quantity}<strong>$${teaSubtotal.toFixed(2)}</strong>`;
+                li.innerHTML = `<span>${productName}</span><span>x ${quantity}</span><strong>$${teaSubtotal.toFixed(2)}</strong>`;
                 checkoutItems.appendChild(li);
             }
             const tax = subtotal * taxRate;
