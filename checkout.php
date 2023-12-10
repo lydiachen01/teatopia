@@ -99,12 +99,7 @@
             <?php
             // Replace the following lines with actual database connection and query code
 
-            $servername = "localhost";
-            $username = "u9rnmkwnhqk3j";
-            $password = "@*2l@2f7i%&2";
-            $dbname = "dbygr11xzpv4y";
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli("localhost", "u9rnmkwnhqk3j", "@*2l@2f7i%&2", "dbygr11xzpv4y5");
 
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
