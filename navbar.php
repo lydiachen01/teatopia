@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <script src="jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="/dist/output.css" rel="stylesheet">
     <style>
       * {
         margin: 0;
@@ -41,6 +46,16 @@
         }
       }
     </style>
+
+    <script>
+      const loginStatus = "<?php echo isset($_SESSION['loginStatus']) ? $_SESSION['loginStatus'] : 'failure'; ?>";
+
+      if (loginStatus === "success") {
+          document.getElementById('tea-profile-pic').classList.remove('hidden');
+          document.getElementById('default-login').classList.add('hidden');
+      }
+  </script>
+  
 </head>
 <body>
     <nav style="border-bottom: 2px solid rgba(128, 128, 128, 0.547)">
@@ -86,7 +101,7 @@
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="catalog.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Shop</a>
+                  <a href="catalog.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Shop</a>
                   <a href="benefits_of_tea.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Benefits</a>
                   <a href="contacts.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                   <a href="location.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Locations</a>
@@ -97,15 +112,6 @@
               <!-- Profile dropdown -->
               <div class="relative ml-3" id="user-menu">
                 <div style="display: flex;">
-                  <div>
-                    <a href="checkout.html">
-                      <button type="button" class="navbar-btn relative flex text-sm h-7" id="teapot-menu-button" aria-expanded="false" aria-haspopup="true">
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">Open user menu</span>
-                        <span class="flex items-center"><img class="h-7 w-7 mx-2" src="./assests/teapot.png" alt="profile"></span>
-                      </button>
-                    </a>
-                  </div>
                   
                   <!-- Checkout and Profile Icons -->
                   <div>
@@ -139,7 +145,7 @@
                 <!-- Profile Dropdown Menu -->
                 <div id="profile-menu" class="hidden">
                   <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                    <a href="user_profile.html" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                    <a href="user_profile.php" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                     <a href="discussion.html" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Discussion</a>
                     <a onclick="signOutAndRedirect(event)" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign Out</a>
                 

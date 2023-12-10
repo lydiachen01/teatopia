@@ -1,14 +1,14 @@
 <?php
+session_start();
 
 $server = "localhost";
 $userid = "u9rnmkwnhqk3j";
 $pw = "@*2l@2f7i%&2";
 $db = "dbygr11xzpv4y5";
 
-console.log("Reached create_user.php");
-
 $conn = new mysqli($server, $userid, $pw, $db);
 
+// Make sure to delete later!!
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -35,10 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Insert user into the database
         $stmt = $conn->prepare("INSERT INTO user_table (username, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
-
+        
         if ($stmt->execute()) {
-            // Registration successful
-            header("Location: user_profile.html");
+            $userID = $stmt->insert_id;
+            $_SESSION['userID'] = $userID;
+            $_SESSION['loginStatus'] = 'success';
+
+            header("Location: user_profile.php");
             exit();
         } else {
             // Registration failed
@@ -48,6 +51,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
-
 ?>

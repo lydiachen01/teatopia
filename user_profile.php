@@ -1,3 +1,35 @@
+<?php
+session_start();
+
+$server = "localhost";
+$userid = "u9rnmkwnhqk3j";
+$pw = "@*2l@2f7i%&2";
+$db = "dbygr11xzpv4y5";
+
+$conn = new mysqli($server, $userid, $pw, $db);
+
+$userID = $_SESSION['userID'];
+
+// Fetch user information from the database
+$stmt = $conn->prepare("SELECT * FROM user_table WHERE userID = ?");
+$stmt->bind_param("i", $userID);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    // User found, fetch user details
+    $userDetails = $result->fetch_assoc();
+    $email = $userDetails['email'];
+    $username = $userDetails['username'];
+} else {
+    // Handle the case where the user is not found
+    echo "User not found";
+}
+
+$stmt->close();
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +45,8 @@
     <script
         src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
     <style>
     
         .parent {
@@ -45,7 +78,7 @@
             border-left: 1px olivedrab solid;
         }
 
-        .right div{
+        .right {
             padding: 0 0 0 80px; 
         }
 
@@ -57,6 +90,7 @@
         .box{
             height: 160px;
             margin-bottom: 80px;
+            text-align: left;
             background-color: rgba(106, 142, 35, 0.225);
         }
 
@@ -81,9 +115,9 @@
     <!-- Navbar Component -->
     <div id="header" style="z-index:100;"></div>
     <script>
-      $(function() {
-        $("#header").load("navbar.html");
-      });
+        $(function() {
+            $("#header").load("navbar.php");
+        });
     </script>
 
     <div class="parent">
@@ -92,58 +126,29 @@
             <div class="left">
                 <nav class="category">
                     <a href="#user-info"><div>User Info</div></a>
-                    <a href="#shipping-info"><div>Shipping Addresses</div></a>
-                    <a href="#payment-info"><div>Payment Information</div></a>
                     <a href="#order-history"><div>Order History</div></a>
                 </nav>
-                
             </div>
 
             <div class="right">
-            <!-- User Info/Contact Info -->
+                <!-- User Info/Contact Info -->
                 <div id="user-info">
                     <label>User Info</label>
-                    <div class="box"></div>
-
-                </div>
-
-                <!-- Shipping Address -->
-                <div id="shipping-info">
-                    <label>Shipping Address</label>
-                    <div class="box"></div>
-
-                </div>
-                
-                <!-- Payment -->
-                <div id="payment-info">
-                    <label>Payment Information</label>
-                    <div class="box"></div>
-
+                    <div class="box">
+                        <div>Username: <?php echo $username; ?></div>
+                        <div>Email: <?php echo $email; ?></div>
+                    </div>
                 </div>
 
                 <!-- Order History -->
-                <div id="order-history">
-                    <label>Order History</label>
+                <div id="order-history" class="mt-4 block">
+                    <label class="block font-bold text-lg mb-2">Order History</label>
                     <div class="box"></div>
-
                 </div>
             </div>
             <!-- end of profile -->
-        </div> 
+        </div>
         <!-- end of parent -->
     </div>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const status = urlParams.get("status");
-
-        if (status == "success") {
-            document.getElementById("logged-in").classList.remove("hidden");
-            document.getElementById("default-login").classList.add("hidden");
-        } else if (status == "failure"){
-            document.getElementById("logged-in").classList.add("hidden");
-            document.getElementById("default-login").classList.remove("hidden");
-        }
-    </script>
 </body>
 </html>
