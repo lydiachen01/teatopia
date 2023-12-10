@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Update posts container with new post
                 const postElement = createPostElement(data);
-                postsContainer.appendChild(postElement);
+                postsContainer.insertBefore(postElement, postsContainer.firstChild);
 
                 // Clear the form
                 postForm.reset();
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('fetch_posts.php')
         .then(response => response.json())
         .then(posts => {
-            posts.forEach(post => {
+            posts.reverse().forEach(post => {
                 const postElement = createPostElement(post);
                 postsContainer.appendChild(postElement);
             });
