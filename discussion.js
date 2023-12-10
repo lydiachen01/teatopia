@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Fetch initial posts (if any)
-    fetch('get_posts.php')
+    fetch('fetch_posts.php')
         .then(response => response.json())
         .then(posts => {
             posts.forEach(post => {
