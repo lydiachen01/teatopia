@@ -286,43 +286,11 @@
                 return teaPrices[itemName];
             }
 
-            function validateForm() {
-            const shippingForm = document.getElementById('shippingForm');
-            const paymentForm = document.getElementById('paymentForm');
 
-            if (!validateIndividualForm(shippingForm) || !validateIndividualForm(paymentForm)) {
-                return false;
-            }
-
-            return true;
-        }
-
-        function validateIndividualForm(form) {
-            const inputs = form.querySelectorAll('input[required]');
-            let isValid = true;
-
-            inputs.forEach((input) => {
-                if (!input.value.trim()) {
-                    alert(`Please enter ${input.getAttribute('data-label')}.`);
-                    isValid = false;
-                }
-            });
-
-            return isValid;
-        }
         thankYouButton.addEventListener('click', function () {
-            const isValidForm = validateForm();
-
-            if (isValidForm) {
-                const cartData = JSON.stringify(cart);
-                document.getElementById('cartDataInput').value = cartData;
-                hideElements();
-                showThankYouMessage();
-
-                setTimeout(function () {
-                    window.location.href = 'index.html';  // Redirect only if the form is valid
-                }, 1500);
-            }
+            const cartData = JSON.stringify(cart);
+            document.getElementById('cartDataInput').value = cartData;
+            window.location.href = 'index.html';    
         });
 
         });
