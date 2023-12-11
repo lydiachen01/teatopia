@@ -127,7 +127,7 @@ if ($result->num_rows === 1) {
                 </div>
               </a>
               <div class="hidden sm:ml-6 sm:block">
-                <div class="flex space-x-4">
+                <div class="flex space-x-4" style="font-family: 'Poppins', sans-serif;">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                   <a href="catalog.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Shop</a>
                   <a href="benefits_of_tea.html" class="text-black-300 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium">Benefits</a>
@@ -144,8 +144,7 @@ if ($result->num_rows === 1) {
                       font-size: 16px; 
                       font-weight: normal; 
                       place-items: center; 
-                      margin-top: 3px; 
-                      font-family:"><?php echo $username?></div>  
+                      margin-top: 3px;"><?php echo $username?></div>  
 
                   <!-- Checkout and Profile Icons -->
                   <div>
@@ -177,7 +176,7 @@ if ($result->num_rows === 1) {
                 </div>
       
                 <!-- Profile Dropdown Menu -->
-                <div id="profile-menu" class="hidden">
+                <div id="profile-menu" class="hidden" style="font-family: 'Poppins', sans-serif;">
                   <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <a href="user_profile.php" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                     <a href="discussion.html" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Discussion</a>
@@ -204,10 +203,9 @@ if ($result->num_rows === 1) {
         <div class="hidden" id="mobile-menu">
           <div class="space-y-1 px-2 pb-3 pt-2">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="catalog.html" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Shop</a>
-            <a href="benefits_of_tea.html" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Benefits</a>
-            <a href="contacts.html" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
-            <a href="location.html" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Locations</a>
+            <a href="catalog.html" style="font-family: 'Poppins', sans-serif;" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Shop</a>
+            <a href="benefits_of_tea.html" style="font-family: 'Poppins', sans-serif;" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Benefits</a>
+            <a href="contacts.html" style="font-family: 'Poppins', sans-serif;" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
           </div>
         </div>
       </nav>   
