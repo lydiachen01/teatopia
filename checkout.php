@@ -106,7 +106,7 @@
 
     <div id="checkoutPage">
         <h1 style="text-align: center;" id="cTitle">Checkout</h1>
-
+        <form method="post" action="process_checkout.php">
         <!-- Shipping Address Form -->
         <div id="shippingAddress" class="mb-2">
             <h2 class= "minorTitle">Shipping Address</h2>
@@ -137,6 +137,7 @@
                         <input type="text" class="form-control" id="zipCode" name="zipCode" style="max-width: 100%;" required>
                     </div>
                 </div>
+                
             </form>
         </div>
 
@@ -182,11 +183,12 @@
             <p id="total" style="font-weight: 1000;">Total: $0.00</p>
         </div>
 
+        <input type="hidden" name="cartData" id="cartDataInput" value="">
         <div class="d-flex justify-content-center mb-2"> <!-- Added container div -->
-            <button id="thankYouButton" class="btn btn-success">Complete Purchase</button>
+            <button id="thankYouButton" class="btn btn-success" type="submit">Complete Purchase</button>
         </div>
-
-
+    </form>
+        
         <!-- Thank You Message -->
         <p id="thankYouMessage" class="hide-text">Thank you for shopping with us!!</p>
     </div>
@@ -287,6 +289,8 @@
             }
 
             thankYouButton.addEventListener('click', function () {
+                const cartData = JSON.stringify(cart);
+                document.getElementById('cartDataInput').value = cartData;
                 hideElements();
                 showThankYouMessage();
 
