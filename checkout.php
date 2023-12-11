@@ -286,66 +286,47 @@
                 return teaPrices[itemName];
             }
 
-            thankYouButton.addEventListener('click', function () {
+            function validateForm() {
+            const shippingForm = document.getElementById('shippingForm');
+            const paymentForm = document.getElementById('paymentForm');
+
+            if (!validateIndividualForm(shippingForm) || !validateIndividualForm(paymentForm)) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateIndividualForm(form) {
+            const inputs = form.querySelectorAll('input[required]');
+            let isValid = true;
+
+            inputs.forEach((input) => {
+                if (!input.value.trim()) {
+                    alert(`Please enter ${input.getAttribute('data-label')}.`);
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+        thankYouButton.addEventListener('click', function () {
+            const isValidForm = validateForm();
+
+            if (isValidForm) {
                 const cartData = JSON.stringify(cart);
                 document.getElementById('cartDataInput').value = cartData;
                 hideElements();
                 showThankYouMessage();
 
                 setTimeout(function () {
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.html';  // Redirect only if the form is valid
                 }, 1500);
-            });
+            }
+        });
+
         });
     </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const shippingForm = document.getElementById('shippingForm');
-        shippingForm.addEventListener('submit', function (event) {
-            // Validate full name
-            const fullNameInput = document.getElementById('fullName');
-            if (!fullNameInput.value.trim()) {
-                alert('Please enter your full name.');
-                event.preventDefault(); // Prevent form submission
-                return;
-            }
-
-            // Validate address
-            const addressInput = document.getElementById('address');
-            if (!addressInput.value.trim()) {
-                alert('Please enter your address.');
-                event.preventDefault();
-                return;
-            }
-
-            // Validate city
-            const cityInput = document.getElementById('city');
-            if (!cityInput.value.trim()) {
-                alert('Please enter your city.');
-                event.preventDefault();
-                return;
-            }
-
-            // Validate state
-            const stateInput = document.getElementById('state');
-            if (!stateInput.value.trim()) {
-                alert('Please enter your state.');
-                event.preventDefault();
-                return;
-            }
-
-            // Validate zip code
-            const zipCodeInput = document.getElementById('zipCode');
-            if (!zipCodeInput.value.trim()) {
-                alert('Please enter your zip code.');
-                event.preventDefault();
-                return;
-            }
-        });
-    });
-</script>
-
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
