@@ -877,7 +877,7 @@
                                     properties.forEach((property, index) => {
                                         const propertyDiv = document.createElement('div');
 
-                                        if (tea[property] !== undefined || tea[property] !== "") {
+                                        if (tea[property] !== undefined && tea[property] !== "") {
                                             propertyDiv.innerHTML = `<span class="font-semibold">${capitalizeFirstLetter(displayedProperties[index])}:</span> <span class="text-gray-800">${tea[property]}</span>`;
                                         }
 
@@ -916,6 +916,7 @@
                                     // Display property name and value
                                     if (tea[property] !== undefined && tea[property] !== "") {
                                         propertyDiv.innerHTML = `<span class="font-semibold">${capitalizeFirstLetter(displayedProperties[index])}:</span> <span class="text-gray-800">${tea[property]}</span>`;
+                                        console.log(tea[property]);
                                     }
 
                                     // Append property div to the details div
