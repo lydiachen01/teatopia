@@ -82,7 +82,24 @@
             font-weight: 300;
         }
 
-        .contact .submit {
+        .contact-form {
+        max-width: 300px; /* Set a maximum width for the form */
+        margin: 0 auto; /* Center the form horizontally */
+    }
+
+    .contact-form label {
+        font-size: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%; /* Set the width to 100% */
+        padding: 10px; /* Adjust padding as needed */
+        margin-bottom: 10px; /* Adjust margin as needed */
+        color: #333;
+    }
+
+    .contact .submit {
             background-color: #fff;
             color: #142215c5;
             padding: 1vh 2vh;
@@ -142,8 +159,8 @@
                     <label for="email" style="font-size: 14px">Email: &nbsp;</label><br>
                     <input type="email" id="email" name="email" style="margin-bottom: .5em;"><br>
                     <label for="message" style="font-size: 14px">Message:</label><br>
-                    <textarea id="message" name="message" rows="2" cols="30"
-                        style="padding: 20px; margin-bottom: .5em;"></textarea><br>
+                    <textarea id="message" name="message" rows="6" cols="30"
+                        style="padding: 10px; margin-bottom: .5em;"></textarea><br>
                     <input class="submit" type="submit" value="Submit">
                 </form>
             </div>
