@@ -618,7 +618,7 @@
                     class="mt-2 px-4 py-2 border rounded-md focus:outline-none focus:border-lightgreen-500">
                 <div>
                     <button type="submit">Search</button>
-                    <button onclick="clearSearch();">Clear</button>
+                    <button onclick="event.preventDefault(); clearSearch();">Clear</button>
                 </div>
                 <div id="tea-api-information-block" class="tea-information hidden">
                     <!-- Tea Info -->
@@ -628,7 +628,6 @@
                         document.getElementById("tea-api-information-block").innerHTML = "";
                         document.getElementById("tea-api-information-block").classList.add("hidden");
                         document.getElementById("search-tea-input").value = "";
-                        return false;
                     }
                 </script>
             </form>
