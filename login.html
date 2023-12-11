@@ -29,8 +29,7 @@
     
 </head>
 
-<body>
-    <img id="background-img" src="#">
+<body
     
     <!-- Navbar -->
     <div id="header"></div>
@@ -40,25 +39,30 @@
       });
     </script>
 
-    <div class="account-box" id="register">
-        <h1>Login</h1>
-        <form id="register-form" method="POST" action="user_auth.php">
-            <div class="user-box">
-                <input type="email" name="email" id="email" placeholder="Email"
-                required>
-            </div>
+    <div class="container">
+        <div class="image-container">
+            <img src="./assests/signup.jpeg" alt="Signup Image" style="width: 100%; height: 100vh; object-fit: cover;">
+        </div>
+        <div class="account-box" id="register">
+            <h1>Login</h1>
+            <form id="register-form" method="POST" action="user_auth.php">
+                <div class="user-box">
+                    <input type="email" name="email" id="email" placeholder="Email"
+                    required>
+                </div>
 
-            <div class="user-box">
-                <input type="password" name="password" id="password" 
-                placeholder="Password" required>
-                <span id="login-status"></span>
-            </div>
+                <div class="user-box">
+                    <input type="password" name="password" id="password" 
+                    placeholder="Password" required>
+                    <span id="login-status"></span>
+                </div>
 
-            <div class="selector">
-                <a href="./signup.html" class="account">Don't have an account?</a>
-                <button type="submit" class="btn">Submit</button>
-            </div>
-        </form>
+                <div class="selector">
+                    <a href="./signup.html" class="account">Don't have an account?</a>
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script>
