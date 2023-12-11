@@ -182,7 +182,9 @@
         </div>
 
         <input type="hidden" name="cartData" id="cartDataInput" value="">
-        <button id="thankYouButton" class="btn btn-success d-flex justify-content-center mb-2" type="submit">Complete Purchase</button>
+        <div class="d-flex justify-content-center mb-2">
+        <button id="thankYouButton" class="btn btn-success" type="submit" style = "background-color: #416843;">Complete Purchase</button>
+        </div>
     </form>
         
         <!-- Thank You Message -->
