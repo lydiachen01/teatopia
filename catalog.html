@@ -548,6 +548,19 @@
                     console.error('Error fetching tea list:', error.message);
                 });
 
+                const quantityDisplay = document.getElementById('customQuantity');
+
+                const incrementButton = document.getElementById('incrementButton');
+                const decrementButton = document.getElementById('decrementButton');
+
+                incrementButton.addEventListener('click', function () {
+                    handleIncrement('customBlend', quantityDisplay);
+                });
+
+                decrementButton.addEventListener('click', function () {
+                    handleDecrement('customBlend', quantityDisplay);
+                });
+
         });
 
     </script>
@@ -602,11 +615,10 @@
             </div>
             <div class="quantity-buttons-container">
                 <div class="increment-container">
-                    <button class="increment-button">-</button>
-                    <span class="quantity-display">0</span>
-                    <button class="increment-button">+</button>
+                    <button class="increment-button" id="decrementButton">-</button>
+                    <span class="quantity-display" id="customQuantity">0</span>
+                    <button class="increment-button" id="incrementButton">+</button>
                 </div>
-                <button class="add-to-cart-button">Add to Cart</button>
             </div>
         </div>
 
@@ -755,6 +767,16 @@
         function goToCheckout() {
             const cartData = encodeURIComponent(JSON.stringify(cart));
             window.location.href = `checkout.php?cartData=${cartData}`;
+        }
+
+        function handleIncrement(teaName, quantityDisplay) {
+            addToCart(teaName);
+            quantityDisplay.textContent = cart[teaName] || 0;
+        }
+
+        function handleDecrement(teaName, quantityDisplay) {
+            removeFromCart(teaName);
+            quantityDisplay.textContent = cart[teaName] || 0;
         }
     </script>
 
