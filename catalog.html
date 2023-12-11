@@ -251,10 +251,6 @@
             border-bottom: olivedrab 8px double;
         }
 
-        .tea-section .text {
-            padding-left: 50px;
-        }
-
         .tea-section .text p {
             width: 47vw;
         }
@@ -307,7 +303,7 @@
             text-align: center;
         }
 
-        #checkbox-options label {
+        .checkbox-options div {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -318,7 +314,7 @@
             transition: background-color 0.3s ease-in-out;
         }
 
-        #checkbox-options label:hover {
+        .checkbox-options div:hover {
             background-color: yellowgreen;
             /* Add a hover effect */
         }
@@ -336,7 +332,6 @@
         .tea-information {
             max-width: 28rem;
             /* equivalent to max-w-md in Tailwind */
-            margin: auto;
             margin-top: 2rem;
             /* equivalent to mt-8 in Tailwind */
             background-color: #ffffff;
@@ -344,9 +339,6 @@
             padding: 1rem;
             /* equivalent to p-4 in Tailwind */
             border-radius: 0.375rem;
-            /* equivalent to rounded in Tailwind */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* equivalent to shadow in Tailwind */
         }
 
         /*Additional Styling*/
@@ -402,9 +394,85 @@
             background-color: transparent;
         }
 
+        .tea-container1 div,
+        .tea-container2 div {
+            padding-bottom: 20px;
+        }
+
+        p {
+            max-width: 100% !important;
+        }
+
+        .custom-blend-container div img {
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 400px;
+        }
+
+        .checkbox-options input[type="checkbox"]+label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .details {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
         /* For mobile phones and tablets: */
         @media only screen and (max-width: 768px) {
-            
+            .tea-section {
+                margin: 0 20px !important;
+            }
+
+            .tea-container1,
+            .tea-container2 {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .tea-container1 div,
+            .tea-container2 div {
+                width: 80%;
+                margin: 0 auto;
+                margin-top: 30px;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #custom-blend-section div {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            #custom-blend-section div p {
+                width: 100%;
+                padding-bottom: 30px;
+            }
+
+            .custom-blend-container {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .custom-blend-container div img {
+                margin: 0 auto;
+                width: 500px;
+            }
+
+            .checkbox-options div label {
+                text-align: center;
+            }
+
+            .checkbox-options div {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .text {
+                padding-left: 0;
+            }
         }
     </style>
 
@@ -623,7 +691,7 @@
         </div>
         <div class="custom-blend-container">
             <div class="blend-image-container">
-                <img src="./assests/tea_blends.jpeg" alt="Custom Blend">
+                <img src="./assests/custom_tea.jpg" alt="Custom Blend">
                 <!-- Adjust margin (mt-2), padding (px-4 py-2), border, and other styles as needed -->
             </div>
             <div class="customize-options">
@@ -648,7 +716,7 @@
             <form method="GET" onsubmit="event.preventDefault(); getTea();"
                 style="display: flex; flex-direction: column; align-items: center;">
                 <input id="search-tea-input" type="text" placeholder="Search Your Tea"
-                    class="mt-2 px-4 py-2 border rounded-md focus:outline-none focus:border-lightgreen-500">
+                    class="mt-2 px-4 py-2 border rounded-md">
                 <div>
                     <button type="submit">Search</button>
                     <button onclick="event.preventDefault(); clearSearch();">Clear</button>
