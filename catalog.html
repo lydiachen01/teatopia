@@ -251,8 +251,12 @@
             border-bottom: olivedrab 8px double;
         }
 
-        .tea-section p {
-            max-width: 500px;
+        .tea-section .text {
+            padding-left: 50px;
+        }
+
+        .tea-section .text p {
+            width: 47vw;
         }
 
         .section-title {
@@ -282,13 +286,15 @@
 
         .custom-blend-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             gap: 20px;
+            padding-left: 10vh;
+            padding-right: 10vh;
         }
 
         .blend-image-container img {
-            max-width: 100%;
+            width: 35vw;
             height: auto;
             border-radius: 10px;
         }
@@ -572,6 +578,7 @@
     <script>
         $(function () {
             $("#header").load("navbar.php");
+            $("#footer").load("footer.html");
         });
     </script>
     <!-- Add this div for the shopping cart icon -->
@@ -598,8 +605,10 @@
     <!-- Start of Tea Sections -->
     <!-- CUSTOMIZE -->
     <section id="custom-blend-section" class="tea-section" style="padding-top: 6em;">
-        <h2 class="section-title">Customize Your Own Blend</h2>
-        <p>Elevate your tea experience with our exclusive "Customize Your Own Blend" feature. Craft a tea that reflects your unique taste and preferences. Choose from a curated selection of premium tea leaves, herbs, and flavors, and let us hand-blend the perfect blend for you. Experience the art of tea personalization at Teatopia – where every cup is a masterpiece tailored to your palate.</p>
+        <div class="text">
+            <h2 class="section-title">Customize Your Own Blend</h2>
+            <p>Elevate your tea experience with our exclusive "Customize Your Own Blend" feature. Craft a tea that reflects your unique taste and preferences. Choose from a curated selection of premium tea leaves, herbs, and flavors, and let us hand-blend the perfect blend for you. Experience the art of tea personalization at Teatopia – where every cup is a masterpiece tailored to your palate.</p>
+        </div>
         <div class="custom-blend-container">
             <div class="blend-image-container">
                 <img src="/assests/tea_blends.jpeg" alt="Custom Blend">
@@ -673,15 +682,19 @@
 
     <!-- PREMADE -->
     <section class="tea-section">
-        <h2 class="section-title">Premade Blends</h2>
-        <p>Discover our thoughtfully crafted Premade Blends, each a harmonious fusion of flavors and aromas. From soothing herbal infusions to bold and exotic blends, our curated collection offers a diverse range of pre-blended teas. Indulge in the convenience of expertly crafted teas that promise to delight your senses and elevate your tea-drinking ritual.</p>
+        <div class="text">
+            <h2 class="section-title">Premade Blends</h2>
+            <p>Discover our thoughtfully crafted Premade Blends, each a harmonious fusion of flavors and aromas. From soothing herbal infusions to bold and exotic blends, our curated collection offers a diverse range of pre-blended teas. Indulge in the convenience of expertly crafted teas that promise to delight your senses and elevate your tea-drinking ritual.</p>
+        </div>
         <div class="tea-container1" id="tea-container1"></div>
     </section>
 
     <!-- REGULAR -->
     <section class="tea-section">
-        <h2 class="section-title">Regular Tea</h2>
-        <p>Embrace the classics with our selection of Regular Teas. From robust black teas to delicate green varieties, each offering in our Regular Tea collection is a celebration of tradition and quality. Sourced from the finest tea gardens worldwide, these teas promise a timeless and authentic experience with every sip. Rediscover the essence of tea at Teatopia.</p>
+        <div class="text">
+            <h2 class="section-title">Regular Tea</h2>
+            <p>Embrace the classics with our selection of Regular Teas. From robust black teas to delicate green varieties, each offering in our Regular Tea collection is a celebration of tradition and quality. Sourced from the finest tea gardens worldwide, these teas promise a timeless and authentic experience with every sip. Rediscover the essence of tea at Teatopia.</p>
+        </div>
         <div class="tea-container2" id="tea-container2"></div>
     </section>
 
