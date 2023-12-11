@@ -798,11 +798,6 @@
 
                     // Iterate through teas to find the one with the specified name
                     for (let tea of data) {
-                        console.log("BOOP");
-                        console.log("This is teaName:", tea[teaName]);
-                        console.log("This is tea:", tea);
-
-                        // && tea[teaName] == teaName
                         if (tea.name != 'NA') {
                             if (tea[teaName] != undefined) {
                                 if (tea.slug.toLowerCase() === "blends") {
