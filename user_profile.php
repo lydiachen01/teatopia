@@ -159,6 +159,8 @@ $conn->close();
         <div class="profile grid-cols-2 grid mx-6" style="width:1200px;">
             <!-- Sidebar -->
             <div class="left">
+                <div class="profile-picture-container" id="profilePictureContainer"></div>
+
                 <nav class="category">
                     <a href="#user-info"><div>User Info</div></a>
                     <a href="#order-history"><div>Order History</div></a>
@@ -198,5 +200,31 @@ $conn->close();
         </div>
         <!-- end of parent -->
     </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Assuming you have a profile picture file in the 'images' folder
+        var profilePicturePath = "./assests/black_tea.jpg";
+        var username = '<?php echo $username; ?>';
+
+        var profileContainer = document.getElementById('profilePictureContainer');
+
+        // Create an img element for the profile picture
+        var imgElement = document.createElement('img');
+        imgElement.src = profilePicturePath;
+        imgElement.alt = 'Profile Picture';
+        imgElement.style.width = '100px';
+        imgElement.style.height = '100px';
+        imgElement.style.borderRadius = '50%';
+
+        // Create a div for user information
+        var userInfoDiv = document.createElement('div');
+        userInfoDiv.innerHTML = '<div><b style="font-size:32px;">' + username + '</b></div>';
+
+        // Append the profile picture and user information to the container
+        profileContainer.appendChild(imgElement);
+        profileContainer.appendChild(userInfoDiv);
+    });
+</script>
 </body>
 </html>
