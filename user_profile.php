@@ -25,12 +25,14 @@ if ($result->num_rows === 1) {
 
 $stmt->close();
 
-$stmt_orders = $conn->prepare("SELECT ot.orderID, oi.quantity, pt.productName
-                            FROM order_table ot
-                            JOIN OrderItem oi ON ot.orderID = oi.orderID
-                            JOIN product_table pt ON oi.productID = pt.productID
-                            WHERE ot.userID = ?"
-);
+// Fetch user's past orders from the database
+$stmt_orders = $conn->prepare("
+    SELECT ot.orderID, oi.quantity, pt.productName
+    FROM order_table ot
+    JOIN OrderItem oi ON ot.orderID = oi.orderID
+    JOIN product_table pt ON oi.productID = pt.productID
+    WHERE ot.userID = ?
+");
 
 $stmt_orders->bind_param("i", $userID);
 $stmt_orders->execute();
@@ -38,7 +40,12 @@ $result_orders = $stmt_orders->get_result();
 
 $orders = [];
 while ($row = $result_orders->fetch_assoc()) {
-    $orders[] = $row;
+    $orderID = $row['orderID'];
+    if (!isset($orders[$orderID])) {
+        $orders[$orderID] = ['products' => []];
+    }
+    $orders[$orderID]['orderID'] = $orderID;
+    $orders[$orderID]['products'][] = ['productName' => $row['productName'], 'quantity' => $row['quantity']];
 }
 
 $stmt_orders->close();
@@ -130,13 +137,12 @@ $conn->close();
         }
 
         .box {
-            height: 160px;
-            margin-bottom: 80px;
-            text-align: left;
-            background-color: rgba(106, 142, 35, 0.225);
-            padding: 20px; /* Add padding */
-            border-radius: 10px; /* Add border-radius for rounded corners */
-        }
+        text-align: left;
+        background-color: rgba(106, 142, 35, 0.225);
+        padding: 10px; /* Adjust padding */
+        border-radius: 10px; /* Add border-radius for rounded corners */
+        margin-bottom: 20px; /* Adjust margin */
+    }
     </style>
 </head>
 <body>
@@ -168,14 +174,17 @@ $conn->close();
                         <div>Email: <?php echo $email; ?></div>
                     </div>
                 </div>
-
+            
                 <!-- Order History -->
                 <div id="order-history" class="mt-4 block">
                     <label class="block text-lg">Order History</label>
                     <?php if (!empty($orders)): ?>
                         <?php foreach ($orders as $order): ?>
                             <div class="box">
-                                <div><?php echo $order['productName']; ?> x <?php echo $order['quantity']; ?></div>
+                                <div>Order ID: <?php echo $order['orderID']; ?></div>
+                                <?php foreach ($order['products'] as $product): ?>
+                                    <div><?php echo $product['productName']; ?> x <?php echo $product['quantity']; ?></div>
+                                <?php endforeach; ?>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
