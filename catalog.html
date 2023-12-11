@@ -914,7 +914,7 @@
                                     const propertyDiv = document.createElement('div');
 
                                     // Display property name and value
-                                    if (tea[property] !== undefined) {
+                                    if (tea[property] !== undefined && tea[property] !== "") {
                                         propertyDiv.innerHTML = `<span class="font-semibold">${capitalizeFirstLetter(displayedProperties[index])}:</span> <span class="text-gray-800">${tea[property]}</span>`;
                                     }
 
