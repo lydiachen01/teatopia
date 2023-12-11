@@ -103,14 +103,13 @@
             $("#header").load("navbar.php");
         });
     </script>
-
+    <form method="post" action="process_checkout.php"> 
     <div id="checkoutPage">
         <h1 style="text-align: center;" id="cTitle">Checkout</h1>
-        <form method="post" action="process_checkout.php">
         <!-- Shipping Address Form -->
         <div id="shippingAddress" class="mb-2">
             <h2 class= "minorTitle">Shipping Address</h2>
-            <form id="shippingForm">
+            <form id="shippingForm" >
                 <div class="mb-2">
                     <label for="fullName" class="form-label">Full Name:</label>
                     <input type="text" class="form-control" id="fullName" name="fullName" style="max-width: 100%;" required>
@@ -136,8 +135,7 @@
                         <label for="zipCode" class="form-label">Zip Code:</label>
                         <input type="text" class="form-control" id="zipCode" name="zipCode" style="max-width: 100%;" required>
                     </div>
-                </div>
-                
+                </div>    
             </form>
         </div>
 
@@ -184,9 +182,7 @@
         </div>
 
         <input type="hidden" name="cartData" id="cartDataInput" value="">
-        <div class="d-flex justify-content-center mb-2"> <!-- Added container div -->
-            <button id="thankYouButton" class="btn btn-success" type="submit">Complete Purchase</button>
-        </div>
+        <button id="thankYouButton" class="btn btn-success d-flex justify-content-center mb-2" type="submit">Complete Purchase</button>
     </form>
         
         <!-- Thank You Message -->
@@ -300,6 +296,53 @@
             });
         });
     </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const shippingForm = document.getElementById('shippingForm');
+        shippingForm.addEventListener('submit', function (event) {
+            // Validate full name
+            const fullNameInput = document.getElementById('fullName');
+            if (!fullNameInput.value.trim()) {
+                alert('Please enter your full name.');
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            // Validate address
+            const addressInput = document.getElementById('address');
+            if (!addressInput.value.trim()) {
+                alert('Please enter your address.');
+                event.preventDefault();
+                return;
+            }
+
+            // Validate city
+            const cityInput = document.getElementById('city');
+            if (!cityInput.value.trim()) {
+                alert('Please enter your city.');
+                event.preventDefault();
+                return;
+            }
+
+            // Validate state
+            const stateInput = document.getElementById('state');
+            if (!stateInput.value.trim()) {
+                alert('Please enter your state.');
+                event.preventDefault();
+                return;
+            }
+
+            // Validate zip code
+            const zipCodeInput = document.getElementById('zipCode');
+            if (!zipCodeInput.value.trim()) {
+                alert('Please enter your zip code.');
+                event.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
 
 
     <!-- Bootstrap JS -->
