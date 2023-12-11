@@ -25,13 +25,14 @@ if ($result->num_rows === 1) {
 
 $stmt->close();
 
-// Fetch user's past orders from the database
+// Fetch user's past orders from the database, ordered by orderID in descending order
 $stmt_orders = $conn->prepare("
     SELECT ot.orderID, oi.quantity, pt.productName
     FROM order_table ot
     JOIN OrderItem oi ON ot.orderID = oi.orderID
     JOIN product_table pt ON oi.productID = pt.productID
     WHERE ot.userID = ?
+    ORDER BY ot.orderID DESC
 ");
 
 $stmt_orders->bind_param("i", $userID);
