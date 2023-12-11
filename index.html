@@ -36,6 +36,7 @@
     <script>
         $(function () {
             $("#header").load("navbar.php");
+            $("#footer").load("footer.html");
             $(".landing-text").addClass("fade-in");
         });
 
@@ -214,43 +215,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-center text-white" style="background-color: #203522">
-        <!-- Grid container -->
-        <div class="container p-4">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-12 mb-4 mb-md-0" style="margin: 0 auto;">
-                    <!-- Section: Form -->
-                    <section>
-                        <form>
-                            <p class="pt-2">
-                                <strong>Sign up for our "Tidbit of Teas" series </strong>
-                            </p>
-                            <div class="form-outline form-white mb-4">
-                                <input type="email" id="form5Example21" class="form-control"
-                                    placeholder="Email address" />
-                            </div>
-                            <button type="submit" class="btn btn-outline-light mb-4">
-                                Subscribe
-                            </button>
-                        </form>
-                    </section>
-                    <!-- Section: Form -->
-                </div>
-                <!--Grid column-->
-            </div>
-            <!--Grid row-->
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2023 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">SeaShellsByTheSeaShore</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    <div id="footer"></div>
 
 </body>
 
