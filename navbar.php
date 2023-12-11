@@ -60,7 +60,7 @@ if ($result->num_rows === 1) {
 
       @media screen and (max-width: 639px){
         #logo{
-          margin-left: 6.5em;
+          margin-left: 4.5em;
         }
 
         #ham-bar {
