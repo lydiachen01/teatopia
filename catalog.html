@@ -761,6 +761,15 @@
                 }
             }
 
+            const customBlendContainer = document.getElementById('custom-blend-section');
+
+            // If the element is found, update the quantity display
+            if (customBlendContainer) {
+                const quantityDisplay = customBlendContainer.querySelector('.quantity-display');
+                if (quantityDisplay) {
+                    quantityDisplay.textContent = cart[productName] || 0;
+                }
+            }
             // Update the cart notification
             updateCartNotification();
         }
