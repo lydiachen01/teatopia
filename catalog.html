@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -251,10 +254,6 @@
             border-bottom: olivedrab 8px double;
         }
 
-        .tea-section .text {
-            padding-left: 50px;
-        }
-
         .tea-section .text p {
             width: 47vw;
         }
@@ -307,7 +306,7 @@
             text-align: center;
         }
 
-        #checkbox-options label {
+        .checkbox-options div {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -318,7 +317,7 @@
             transition: background-color 0.3s ease-in-out;
         }
 
-        #checkbox-options label:hover {
+        .checkbox-options div:hover {
             background-color: yellowgreen;
             /* Add a hover effect */
         }
@@ -336,7 +335,6 @@
         .tea-information {
             max-width: 28rem;
             /* equivalent to max-w-md in Tailwind */
-            margin: auto;
             margin-top: 2rem;
             /* equivalent to mt-8 in Tailwind */
             background-color: #ffffff;
@@ -344,9 +342,6 @@
             padding: 1rem;
             /* equivalent to p-4 in Tailwind */
             border-radius: 0.375rem;
-            /* equivalent to rounded in Tailwind */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* equivalent to shadow in Tailwind */
         }
 
         /*Additional Styling*/
@@ -400,6 +395,87 @@
 
         #header button:hover {
             background-color: transparent;
+        }
+
+        .tea-container1 div,
+        .tea-container2 div {
+            padding-bottom: 20px;
+        }
+
+        p {
+            max-width: 100% !important;
+        }
+
+        .custom-blend-container div img {
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 400px;
+        }
+
+        .checkbox-options input[type="checkbox"]+label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .details {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* For mobile phones and tablets: */
+        @media only screen and (max-width: 768px) {
+            .tea-section {
+                margin: 0 20px !important;
+            }
+
+            .tea-container1,
+            .tea-container2 {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .tea-container1 div,
+            .tea-container2 div {
+                width: 80%;
+                margin: 0 auto;
+                margin-top: 30px;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #custom-blend-section div {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            #custom-blend-section div p {
+                width: 100%;
+                padding-bottom: 30px;
+            }
+
+            .custom-blend-container {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .custom-blend-container div img {
+                margin: 0 auto;
+                width: 500px;
+            }
+
+            .checkbox-options div label {
+                text-align: center;
+            }
+
+            .checkbox-options div {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .text {
+                padding-left: 0;
+            }
         }
     </style>
 
@@ -586,7 +662,8 @@
         });
     </script>
     <!-- Add this div for the shopping cart icon -->
-    <div class="cart-icon border border-solid border-gray-300" id="cart-icon" onclick="toggleCart()">
+    <div class="cart-icon border border-solid border-gray-300" id="cart-icon" onclick="toggleCart()"
+        style="z-index: 900;">
         <!-- You can use an icon library or an image for the shopping cart icon -->
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-notification" id="cart-notification"></span> <!-- This will display the green dot -->
@@ -618,7 +695,7 @@
         </div>
         <div class="custom-blend-container">
             <div class="blend-image-container">
-                <img src="./assests/tea_blends.jpeg" alt="Custom Blend">
+                <img src="./assests/custom_tea.jpg" alt="Custom Blend">
                 <!-- Adjust margin (mt-2), padding (px-4 py-2), border, and other styles as needed -->
             </div>
             <div class="customize-options">
@@ -643,7 +720,7 @@
             <form method="GET" onsubmit="event.preventDefault(); getTea();"
                 style="display: flex; flex-direction: column; align-items: center;">
                 <input id="search-tea-input" type="text" placeholder="Search Your Tea"
-                    class="mt-2 px-4 py-2 border rounded-md focus:outline-none focus:border-lightgreen-500">
+                    class="mt-2 px-4 py-2 border rounded-md">
                 <div>
                     <button type="submit">Search</button>
                     <button onclick="event.preventDefault(); clearSearch();">Clear</button>
@@ -698,7 +775,7 @@
     </section>
 
     <!-- REGULAR -->
-    <section class="tea-section">
+    <section class="tea-section" style="border-bottom:none">
         <h2 class="section-title">Regular Tea</h2>
         <p>Embrace the classics with our selection of Regular Teas. From robust black teas to delicate green varieties,
             each offering in our Regular Tea collection is a celebration of tradition and quality. Sourced from the
@@ -951,6 +1028,7 @@
     </script>
 
     <!-- Footer -->
+    <div id="footer"></div>
 </body>
 
 </html>
