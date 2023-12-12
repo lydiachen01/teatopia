@@ -121,6 +121,8 @@ $conn->close();
             padding: 10px;
             text-decoration: none;
             color: #333;
+            border-radius: 10px;
+            width: 100%;
             transition: background-color 0.3s ease-in-out;
         }
 
@@ -143,7 +145,59 @@ $conn->close();
         padding: 10px; /* Adjust padding */
         border-radius: 10px; /* Add border-radius for rounded corners */
         margin-bottom: 20px; /* Adjust margin */
-    }
+        }
+
+        #profilePictureContainer img {
+            margin: 0 auto;
+        }
+        
+        .profile-picture-container {
+            margin: 10px 0; /* Adjust margin as needed */
+        }
+
+        #profilePictureContainer img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        .username-left {
+            text-align: center;
+            font-size: 32px;
+            margin: 10px 0; /* Adjust margin as needed */
+        }
+
+        /* For mobile phones and tablets: */
+        @media only screen and (max-width: 768px) {
+            #profile-box {
+                grid-template-columns: repeat(1, 1fr) !important;
+            }
+            .right {
+                margin-top: 2em;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            .left {
+                padding-right: 0px;
+            }
+        }
+
+        /* For desktop: */
+        /* @media only screen and (min-width: 769px) {
+            #profile-box {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .right {
+                margin-top: 2em;
+                margin-left: 0;
+                padding-left: 0;
+            }
+            /* .left {
+                padding-right: 0px;
+            } */
+        } */
+
     </style>
 </head>
 <body>
@@ -156,7 +210,7 @@ $conn->close();
     </script>
 
     <div class="parent">
-        <div class="profile grid-cols-2 grid mx-6" style="width:1200px;">
+        <div id="profile-box" class="profile grid-cols-2 grid mx-6" style="width:1200px;">
             <!-- Sidebar -->
             <div class="left">
                 <div class="profile-picture-container" id="profilePictureContainer"></div>
@@ -213,13 +267,14 @@ $conn->close();
         var imgElement = document.createElement('img');
         imgElement.src = profilePicturePath;
         imgElement.alt = 'Profile Picture';
-        imgElement.style.width = '100px';
-        imgElement.style.height = '100px';
+        imgElement.style.width = '200px';
+        imgElement.style.height = '200px';
         imgElement.style.borderRadius = '50%';
 
         // Create a div for user information
         var userInfoDiv = document.createElement('div');
-        userInfoDiv.innerHTML = '<div><b style="font-size:32px;">' + username + '</b></div>';
+        userInfoDiv.className = "username-left";
+        userInfoDiv.innerHTML = '<div><b style="font-size:32px; margin: 0 auto;">' + username + '</b></div>';
 
         // Append the profile picture and user information to the container
         profileContainer.appendChild(imgElement);

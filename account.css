@@ -59,14 +59,14 @@ html {
 }
 
 .account-box .btn:hover {
-    background: #416843;
-    color: #fff;
+    background: #ffffff;
+    color: #416843;
     border-radius: 5px;
-    box-shadow: 0 0 5px #416843,
-        0 0 25px #416843,
-        0 0 50px #416843,
-        0 0 100px #416843;
-    border: none;
+    box-shadow: 0 0 5px olivedrab,
+        0 0 25px olivedrab,
+        0 0 50px olivedrab,
+        0 0 100px olivedrab;
+    /* border: none; */
 }
 
 .account {
@@ -84,7 +84,7 @@ body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
-    
+
 }
 
 button {
@@ -104,7 +104,7 @@ h1 {
 }
 
 #login-status {
-    margin-top: -25px; 
+    margin-top: -25px;
     padding: 0 0 20px 0;
 }
 
@@ -112,7 +112,7 @@ h1 {
     position: absolute;
     width: 80%;
     margin-top: 30px;
-    left:0;
+    left: 0;
 }
 
 .image {
