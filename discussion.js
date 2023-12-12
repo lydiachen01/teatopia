@@ -43,7 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(posts => {
         if (Array.isArray(posts)) {
-            posts.reverse().forEach(post => {
+            // Sort posts in descending order based on postID
+            posts.sort((a, b) => b.postID - a.postID);
+
+            posts.forEach(post => {
                 const postElement = createPostElement(post);
                 postsContainer.appendChild(postElement);
             });
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Update posts container with new post
                 const postElement = createPostElement(data);
-                postsContainer.appendChild(postElement);
+                postsContainer.insertBefore(postElement, postsContainer.firstChild);
 
                 // Clear the form
                 postForm.reset();
