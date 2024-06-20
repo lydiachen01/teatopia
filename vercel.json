@@ -1,17 +1,13 @@
 {
     "functions": {
-        "api/checkout.php": { "runtime": "vercel-php@0.6.0" },
-        "api/create_post.php": { "runtime": "vercel-php@0.6.0" },
-        "api/create_user.php": { "runtime": "vercel-php@0.6.0" },
-        "api/fetch_posts.php": { "runtime": "vercel-php@0.6.0" },
-        "api/fetch_teas.php": { "runtime": "vercel-php@0.6.0" },
-        "api/navbar.php": { "runtime": "vercel-php@0.6.0" },
-        "api/process_checkout.php": { "runtime": "vercel-php@0.6.0" },
-        "api/signout.php": { "runtime": "vercel-php@0.6.0" },
-        "api/user_auth.php": { "runtime": "vercel-php@0.6.0" },
-        "api/user_profile.php": { "runtime": "vercel-php@0.6.0" }
+        "api/**/*.php": {
+            "runtime": "vercel-php@0.6.0"
+        }
     },
     "rewrites": [
-        { "source": "/(.*)", "destination": "/api/$1" }
+        {
+            "source": "/(.*)",
+            "destination": "/api/$1"
+        }
     ]
 }
